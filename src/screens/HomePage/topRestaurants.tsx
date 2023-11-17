@@ -23,389 +23,105 @@ export function TopRestaurants() {
           <Box className="category_title">TOP Restauranlar</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"} m={"16px"}>
             <CssVarsProvider>
-              <Card
-                sx={{
-                  minHeight: 430,
-                  minWidth: 325,
-                  mr: "35px",
-                  cursor: "pointer",
-                }}
-              >
-                <CardCover>
-                  <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
-                </CardCover>
-
-                <CardCover
-                  sx={{
-                    background:
-                      "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)",
-                  }}
-                />
-                <CardContent sx={{ justifyContent: "flex-end" }}>
-                  <Typography
-                    level="h2"
-                    fontSize={"lg"}
-                    mb={1}
-                    textColor="#fff"
-                  >
-                    Texas De Brazil
-                  </Typography>
-
-                  <Typography
-                    startDecorator={<LocationOnRoundedIcon />}
-                    textColor="neutral.300"
-                  >
-                    Tashkent, Yunus Abad 4-1
-                  </Typography>
-                </CardContent>
-
-                <CardOverflow
-                  sx={{
-                    display: "flex",
-                    gap: 1.5,
-                    py: 1.5,
-                    // px: "var(--Card-padding)",
-                    // borderTop: "1px solid",
-                  }}
-                >
-                  <IconButton
-                    aria-label="Like minimal photography"
-                    size="md"
-                    variant="solid"
-                    color="neutral"
+              {[1, 2, 3, 4].map(() => {
+                return (
+                  <Card
                     sx={{
-                      position: "absolute",
-                      zIndex: 2,
-                      borderRadius: "50%",
-                      right: "1rem",
-                      bottom: 45,
-                      transform: "translateY(50%)",
-                      color: "rgba(0,0,0,.4)",
+                      minHeight: 430,
+                      minWidth: 325,
+                      mr: "35px",
+                      cursor: "pointer",
                     }}
                   >
-                    <Favorite style={{ fill: "white" }} />
-                  </IconButton>
+                    <CardCover>
+                      <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
+                    </CardCover>
 
-                  <Typography display={"flex"} gap={"10px"}>
-                    <Typography
-                      level="body-md"
+                    <CardCover
                       sx={{
-                        fontWeight: "md",
-                        color: "neutral.300",
-                        alignItems: "center",
+                        background:
+                          "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)",
+                      }}
+                    />
+                    <CardContent sx={{ justifyContent: "flex-end" }}>
+                      <Typography
+                        level="h2"
+                        fontSize={"lg"}
+                        mb={1}
+                        textColor="#fff"
+                      >
+                        Texas De Brazil
+                      </Typography>
+
+                      <Typography
+                        startDecorator={<LocationOnRoundedIcon />}
+                        textColor="neutral.300"
+                      >
+                        Tashkent, Yunus Abad 4-1
+                      </Typography>
+                    </CardContent>
+
+                    <CardOverflow
+                      sx={{
                         display: "flex",
+                        gap: 1.5,
+                        py: 1.5,
+                        // px: "var(--Card-padding)",
+                        // borderTop: "1px solid",
                       }}
                     >
-                      100{" "}
-                      <VisibilityIcon
-                        sx={{ fontSize: 20, marginLeft: "5px" }}
-                      />
-                    </Typography>
+                      <IconButton
+                        aria-label="Like minimal photography"
+                        size="md"
+                        variant="solid"
+                        color="neutral"
+                        sx={{
+                          position: "absolute",
+                          zIndex: 2,
+                          borderRadius: "50%",
+                          right: "1rem",
+                          bottom: 45,
+                          transform: "translateY(50%)",
+                          color: "rgba(0,0,0,.4)",
+                        }}
+                      >
+                        <Favorite style={{ fill: "white" }} />
+                      </IconButton>
 
-                    <Box sx={{ width: 2, bgcolor: "divider" }} />
-                    <Typography
-                      sx={{
-                        fontWeight: "md",
-                        color: "neutral.300",
-                        alignItems: "center",
-                        display: "flex",
-                      }}
-                    >
-                      <div>50</div>
+                      <Typography display={"flex"} gap={"10px"}>
+                        <Typography
+                          level="body-md"
+                          sx={{
+                            fontWeight: "md",
+                            color: "neutral.300",
+                            alignItems: "center",
+                            display: "flex",
+                          }}
+                        >
+                          100{" "}
+                          <VisibilityIcon
+                            sx={{ fontSize: 20, marginLeft: "5px" }}
+                          />
+                        </Typography>
 
-                      <Favorite sx={{ fontSize: 20, marginLeft: "5px" }} />
-                    </Typography>
-                  </Typography>
-                </CardOverflow>
-              </Card>
+                        <Box sx={{ width: 2, bgcolor: "divider" }} />
+                        <Typography
+                          sx={{
+                            fontWeight: "md",
+                            color: "neutral.300",
+                            alignItems: "center",
+                            display: "flex",
+                          }}
+                        >
+                          <div>50</div>
 
-              <Card
-                sx={{
-                  minHeight: 430,
-                  minWidth: 325,
-                  mr: "35px",
-                  cursor: "pointer",
-                }}
-              >
-                <CardCover>
-                  <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
-                </CardCover>
-
-                <CardCover
-                  sx={{
-                    background:
-                      "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)",
-                  }}
-                />
-                <CardContent sx={{ justifyContent: "flex-end" }}>
-                  <Typography
-                    level="h2"
-                    fontSize={"lg"}
-                    mb={1}
-                    textColor="#fff"
-                  >
-                    Texas De Brazil
-                  </Typography>
-
-                  <Typography
-                    startDecorator={<LocationOnRoundedIcon />}
-                    textColor="neutral.300"
-                  >
-                    Tashkent, Yunus Abad 4-1
-                  </Typography>
-                </CardContent>
-
-                <CardOverflow
-                  sx={{
-                    display: "flex",
-                    gap: 1.5,
-                    py: 1.5,
-                    // px: "var(--Card-padding)",
-                    // borderTop: "1px solid",
-                  }}
-                >
-                  <IconButton
-                    aria-label="Like minimal photography"
-                    size="md"
-                    variant="solid"
-                    color="neutral"
-                    sx={{
-                      position: "absolute",
-                      zIndex: 2,
-                      borderRadius: "50%",
-                      right: "1rem",
-                      bottom: 45,
-                      transform: "translateY(50%)",
-                      color: "rgba(0,0,0,.4)",
-                    }}
-                  >
-                    <Favorite style={{ fill: "white" }} />
-                  </IconButton>
-
-                  <Typography display={"flex"} gap={"10px"}>
-                    <Typography
-                      level="body-md"
-                      sx={{
-                        fontWeight: "md",
-                        color: "neutral.300",
-                        alignItems: "center",
-                        display: "flex",
-                      }}
-                    >
-                      100{" "}
-                      <VisibilityIcon
-                        sx={{ fontSize: 20, marginLeft: "5px" }}
-                      />
-                    </Typography>
-
-                    <Box sx={{ width: 2, bgcolor: "divider" }} />
-                    <Typography
-                      sx={{
-                        fontWeight: "md",
-                        color: "neutral.300",
-                        alignItems: "center",
-                        display: "flex",
-                      }}
-                    >
-                      <div>50</div>
-
-                      <Favorite sx={{ fontSize: 20, marginLeft: "5px" }} />
-                    </Typography>
-                  </Typography>
-                </CardOverflow>
-              </Card>
-
-              <Card
-                sx={{
-                  minHeight: 430,
-                  minWidth: 325,
-                  mr: "35px",
-                  cursor: "pointer",
-                }}
-              >
-                <CardCover>
-                  <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
-                </CardCover>
-
-                <CardCover
-                  sx={{
-                    background:
-                      "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)",
-                  }}
-                />
-                <CardContent sx={{ justifyContent: "flex-end" }}>
-                  <Typography
-                    level="h2"
-                    fontSize={"lg"}
-                    mb={1}
-                    textColor="#fff"
-                  >
-                    Texas De Brazil
-                  </Typography>
-
-                  <Typography
-                    startDecorator={<LocationOnRoundedIcon />}
-                    textColor="neutral.300"
-                  >
-                    Tashkent, Yunus Abad 4-1
-                  </Typography>
-                </CardContent>
-
-                <CardOverflow
-                  sx={{
-                    display: "flex",
-                    gap: 1.5,
-                    py: 1.5,
-                    // px: "var(--Card-padding)",
-                    // borderTop: "1px solid",
-                  }}
-                >
-                  <IconButton
-                    aria-label="Like minimal photography"
-                    size="md"
-                    variant="solid"
-                    color="neutral"
-                    sx={{
-                      position: "absolute",
-                      zIndex: 2,
-                      borderRadius: "50%",
-                      right: "1rem",
-                      bottom: 45,
-                      transform: "translateY(50%)",
-                      color: "rgba(0,0,0,.4)",
-                    }}
-                  >
-                    <Favorite style={{ fill: "white" }} />
-                  </IconButton>
-
-                  <Typography display={"flex"} gap={"10px"}>
-                    <Typography
-                      level="body-md"
-                      sx={{
-                        fontWeight: "md",
-                        color: "neutral.300",
-                        alignItems: "center",
-                        display: "flex",
-                      }}
-                    >
-                      100{" "}
-                      <VisibilityIcon
-                        sx={{ fontSize: 20, marginLeft: "5px" }}
-                      />
-                    </Typography>
-
-                    <Box sx={{ width: 2, bgcolor: "divider" }} />
-                    <Typography
-                      sx={{
-                        fontWeight: "md",
-                        color: "neutral.300",
-                        alignItems: "center",
-                        display: "flex",
-                      }}
-                    >
-                      <div>50</div>
-
-                      <Favorite sx={{ fontSize: 20, marginLeft: "5px" }} />
-                    </Typography>
-                  </Typography>
-                </CardOverflow>
-              </Card>
-
-              <Card
-                sx={{
-                  minHeight: 430,
-                  minWidth: 325,
-                  mr: "35px",
-                  cursor: "pointer",
-                }}
-              >
-                <CardCover>
-                  <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
-                </CardCover>
-
-                <CardCover
-                  sx={{
-                    background:
-                      "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)",
-                  }}
-                />
-                <CardContent sx={{ justifyContent: "flex-end" }}>
-                  <Typography
-                    level="h2"
-                    fontSize={"lg"}
-                    mb={1}
-                    textColor="#fff"
-                  >
-                    Texas De Brazil
-                  </Typography>
-
-                  <Typography
-                    startDecorator={<LocationOnRoundedIcon />}
-                    textColor="neutral.300"
-                  >
-                    Tashkent, Yunus Abad 4-1
-                  </Typography>
-                </CardContent>
-
-                <CardOverflow
-                  sx={{
-                    display: "flex",
-                    gap: 1.5,
-                    py: 1.5,
-                    // px: "var(--Card-padding)",
-                    // borderTop: "1px solid",
-                  }}
-                >
-                  <IconButton
-                    aria-label="Like minimal photography"
-                    size="md"
-                    variant="solid"
-                    color="neutral"
-                    sx={{
-                      position: "absolute",
-                      zIndex: 2,
-                      borderRadius: "50%",
-                      right: "1rem",
-                      bottom: 45,
-                      transform: "translateY(50%)",
-                      color: "rgba(0,0,0,.4)",
-                    }}
-                  >
-                    <Favorite style={{ fill: "white" }} />
-                  </IconButton>
-
-                  <Typography display={"flex"} gap={"10px"}>
-                    <Typography
-                      level="body-md"
-                      sx={{
-                        fontWeight: "md",
-                        color: "neutral.300",
-                        alignItems: "center",
-                        display: "flex",
-                      }}
-                    >
-                      100{" "}
-                      <VisibilityIcon
-                        sx={{ fontSize: 20, marginLeft: "5px" }}
-                      />
-                    </Typography>
-
-                    <Box sx={{ width: 2, bgcolor: "divider" }} />
-                    <Typography
-                      sx={{
-                        fontWeight: "md",
-                        color: "neutral.300",
-                        alignItems: "center",
-                        display: "flex",
-                      }}
-                    >
-                      <div>50</div>
-
-                      <Favorite sx={{ fontSize: 20, marginLeft: "5px" }} />
-                    </Typography>
-                  </Typography>
-                </CardOverflow>
-              </Card>
+                          <Favorite sx={{ fontSize: 20, marginLeft: "5px" }} />
+                        </Typography>
+                      </Typography>
+                    </CardOverflow>
+                  </Card>
+                );
+              })}
             </CssVarsProvider>
           </Stack>
         </Stack>
