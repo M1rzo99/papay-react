@@ -30,7 +30,7 @@ export function Footer() {
               </Stack>
             </Stack>
             <Stack className="parts">
-              <Box className="part_subject">Bo'limlar</Box>
+              <Box className="part_subject">Categories</Box>
               <Box className="divider"></Box>
               <Box className="targets">
                 Bosh Sahifa Oshxonalar Jamiyat Yordam
@@ -38,7 +38,7 @@ export function Footer() {
             </Stack>
 
             <Stack className="find_us">
-              <Box className="find">Bizni top</Box>
+              <Box className="find">Find us</Box>
               <Box className="divider"></Box>
 
               <Stack className="details" sx={{ mt: "19px" }}>

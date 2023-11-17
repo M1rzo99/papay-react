@@ -63,3 +63,9 @@
   font-weight: 700;
   line-height: 42px;
 }
+.homepage .best_restaurant_frame {
+  height: 755px;
+  width: 100%;
+  display: flex;
+  background: #0b0e11;
+}
