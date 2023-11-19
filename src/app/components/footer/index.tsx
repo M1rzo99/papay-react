@@ -1,4 +1,5 @@
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/joy";
+import {} from "@mui/material";
 import React from "react";
 export function Footer() {
   return (
