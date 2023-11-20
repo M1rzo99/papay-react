@@ -1,7 +1,7 @@
-import { createTheme } from "@mui/material/styles"
-import { common } from "@mui/material/colors"
-import shadow from "./shadow"
-import typography from "./typography"
+import { createTheme } from "@mui/material/styles";
+import { common } from "@mui/material/colors";
+import shadow from "./shadow";
+import typography from "./typography";
 
 /**
  * LIGHT THEME (DEFAULT)
@@ -15,10 +15,10 @@ const light = {
     },
     primary: {
       contrastText: "#ffffff",
-      main: "#c40909",
+      main: "#1976d2",
     },
     secondary: {
-      main: "#0383a3",
+      main: "#c40909",
     },
     text: {
       primary: "#172b4d",
@@ -44,10 +44,10 @@ const light = {
   },
   shadow,
   typography,
-}
+};
 
 // A custom theme for this app
-let theme = createTheme(light)
+let theme = createTheme(light);
 
 theme = createTheme(theme, {
   components: {
@@ -61,5 +61,5 @@ theme = createTheme(theme, {
       },
     },
   },
-})
-export default theme
+});
+export default theme;

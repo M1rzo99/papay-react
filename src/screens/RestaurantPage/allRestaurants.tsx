@@ -16,13 +16,12 @@ import {
 } from "@mui/material";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import Pogination from "@mui/material/Pagination";
+
 import { CssVarsProvider } from "@mui/joy/styles";
-import { ArrowBack, ArrowForward, Favorite } from "@mui/icons-material";
+import { Favorite } from "@mui/icons-material";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import CallIcon from "@mui/icons-material/Call";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Visibility from "@mui/icons-material/Visibility";
@@ -165,8 +164,11 @@ export function AllRestaurants() {
           </Stack>
 
           <Stack className={"bottom_box"}>
-            <img className={"line_img_two"} src={"/restaurant/line.svg"} />
-
+            <img
+              className={"line_img_two"}
+              src={"/restaurant/line.svg"}
+              alt="#"
+            />
             <Pagination
               count={3}
               page={1}
@@ -181,7 +183,11 @@ export function AllRestaurants() {
                 />
               )}
             />
-            <img className={"line_img"} src={"/restaurant/line.svg"} />
+            <img
+              className={"line_img"}
+              src={"/restaurant/line.svg"}
+              alt="line"
+            />
           </Stack>
         </Stack>
       </Container>

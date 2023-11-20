@@ -5,6 +5,7 @@
   background: #0b0e11;
 }
 
+/*     All restaurant     */
 .restaurant_page .all_restaurant .fil_search_box {
   position: relative;
   width: 100%;
@@ -195,9 +196,18 @@
   justify-content: space-between;
 }
 
-.restaurant_page .all_restaurant .line_img_two {
-  transform: rotate(360deg);
+/*  One Restaurant   */
+
+.restaurant_page .single_restaurant {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  color: #0b0e11;
 }
-/* .restaurant_page .all_restaurant .line_img_two {
-  transform: rotate(360deg);
-} */
+.restaurant_page .single_restaurant {
+  width: 100%;
+  height: auto;
+  display: flex;
+  color: #0b0e11;
+}
