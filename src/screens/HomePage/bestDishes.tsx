@@ -13,7 +13,7 @@ export function BestDishes() {
           <Stack sx={{ mt: "43px" }} flexDirection={"row"}>
             {[1, 2, 3, 4].map(() => {
               return (
-                <Box className="dish_box">
+                <Box className="dish_box" sx={{ ml: "30px" }}>
                   <Stack
                     className="dish_img"
                     sx={{

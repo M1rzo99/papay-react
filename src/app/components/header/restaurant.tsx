@@ -1,6 +1,13 @@
-import { Badge, Box, Button, Container, IconButton, Stack } from "@mui/material"
-import React from "react"
-import { NavLink } from "react-router-dom"
+import {
+  Badge,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Stack,
+} from "@mui/material";
+import React from "react";
+import { NavLink } from "react-router-dom";
 export function NavbarRestaurant(props: any) {
   return (
     <div className="format_restaurant home_navbar">
@@ -11,7 +18,7 @@ export function NavbarRestaurant(props: any) {
           justifyContent={"space-between"}
         >
           <Box>
-            <img src="./icons/Papay.svg" />
+            <img src="/icons/Papay.svg" />
           </Box>
           <Stack
             flexDirection={"row"}
@@ -73,5 +80,5 @@ export function NavbarRestaurant(props: any) {
         </Stack>
       </Container>
     </div>
-  )
+  );
 }
