@@ -7,7 +7,7 @@ import { BestDishes } from "./bestDishes";
 import { Advertisements } from "./advertisements";
 import { Events } from "./events";
 import { Recommindations } from "./recommindations";
-import "../../css/home.css";
+import "../../../css/home.css";
 
 export function HomePage() {
   return (

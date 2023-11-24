@@ -11,7 +11,7 @@ import Rating from "@mui/material/Rating";
 import Checkbox from "@mui/material/Checkbox";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import Marginer from "../../app/components/marginer";
+import Marginer from "../../components/marginer";
 
 const chosen_list = Array.from(Array(10).keys());
 const chosen_list_swiper = Array.from(Array(10).keys());
@@ -31,7 +31,7 @@ export function ChosenDish() {
             modules={[FreeMode, Navigation, Thumbs]}
           >
             {chosen_list.map((ele) => {
-              const image_path = `/others/qovurma.jpeg`;
+              const image_path = `/others/dishes.avif`;
               return (
                 <SwiperSlide>
                   <img

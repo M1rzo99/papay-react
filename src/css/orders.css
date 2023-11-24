@@ -1,0 +1,168 @@
+.order_page {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background: #0b0e11;
+}
+.order_page .order_left {
+  height: auto;
+  width: 70%;
+}
+.order_page .order_right {
+  margin-left: 30px;
+  margin-top: 86px;
+  width: 372px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.order_page .order_right .order_info_box {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.order_page .order_user_avatar {
+  width: 117px;
+  height: 112px;
+  border-radius: 37px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.order_page .Marginer {
+  width: 332.59px;
+  height: 2px;
+  background: #a1a1a1;
+}
+
+.order_right .order_user_icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 37px;
+  background: rgba(0, 0, 0, 0.33);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+}
+.order_right .order_use_img {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.order_right .for_order_inputs {
+  width: 325px;
+  height: 40px;
+  color: #434141;
+
+  font-family: "Commissioner";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px;
+  border: 1px solid #c9c1c1;
+  border-radius: 10px;
+  background: #dedcdc;
+}
+.order_right .orders_inputs {
+  width: 155px;
+  height: 40px;
+  color: #434141;
+  font-family: "Commissioner";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px;
+  border: 1px solid #434141;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #dedcdc;
+}
+.order_right .cart_img {
+  width: 40px;
+  border: 1px solid #dedcdc;
+  height: 25px;
+}
+.order_main_box {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 284px;
+  width: 821px;
+  align-items: center;
+
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0px 4px 16px 0px rgba(242, 189, 87, 0.04) inset,
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset,
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.order_main_box .order_box_scrol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.order_main_box .orderName_price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.order_main_box .order_box_scrol .orderDishImg {
+  width: 50px;
+  height: 47px;
+  border-radius: 29px;
+  margin-right: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.order_main_box .title_Dish {
+  color: #000;
+  font-family: "Commissioner";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; /* 163.636% */
+}
+.order_main_box .priceBox {
+  display: flex;
+  margin-left: 200px;
+  align-items: center;
+  justify-content: space-between;
+}
+.total_orice_box {
+  width: 821px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.total_orice_box .boxTotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 35px;
+  height: 41px;
+  margin-right: 10px;
+}
+.order_btn_bekor:hover {
+  border-radius: 10px;
+  border: 1px solid #d10202;
+  background: #d10202;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  width: 126px;
+  height: 36px;
+  color: #ffffff;
+}
