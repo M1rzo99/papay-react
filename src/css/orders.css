@@ -111,7 +111,7 @@
   height: 656px;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .order_main_box .order_box_scrol {
   display: flex;
