@@ -1,0 +1,231 @@
+.community_page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.community_page .community_frame {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: #0b0e11;
+  justify-content: space-between;
+}
+.community_page .chat_frame {
+  width: 30%;
+  height: 1150px;
+  display: flex;
+  flex-direction: column;
+
+  background: #e3f2fd;
+  border: 1px solid #ffffff;
+  border-radius: 34px;
+}
+.community_page .community_all_frame {
+  width: 68%;
+  height: 1150px;
+  border: 1px solid #ffffff;
+  border-radius: 34px;
+  background: #0b0e11;
+}
+.community_page .chat_frame .chat_top {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(228, 228, 228, 0.83);
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 36px;
+  font-style: normal;
+  line-height: 54px;
+  color: #000000;
+  padding-top: 10px;
+}
+.community_page .chat_frame .chat_bott {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(228, 228, 228, 0.83);
+}
+.community_page .chat_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  padding: 17px;
+  width: 100%;
+  height: 100%;
+}
+.community_page .chat_content .chat_main {
+  position: relative;
+  width: 100%;
+  /* padding: 17px;
+  height: 100%; */
+
+  display: flex;
+  flex-direction: column;
+  /* overflow-y: scroll; */
+}
+.community_page .chat_frame .chat_bott {
+  width: 100%;
+  /* margin-top: 150%; */
+  margin-bottom: 10px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(228, 228, 228, 0.83);
+}
+.community_page .chat_bott .msg_input {
+  padding: 20px;
+  width: 276px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #f7f7f7;
+  border-radius: 28px;
+  border: none;
+  outline-color: #257677;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.community_page .chat_bott .send_msg_btn {
+  cursor: pointer;
+  margin-left: 14px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #55a99d 0%, #007665 100%);
+  border: none;
+}
+.community_page .chat_main .msg_left {
+  color: #383737;
+
+  font-family: "Poppins";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 10px;
+  padding: 9px;
+  width: auto;
+  height: auto;
+  display: flex;
+  background: rgba(228, 228, 228, 0.83);
+  border-radius: 20px 20px 20px 0px;
+}
+.community_page .msg_right {
+  color: #383737;
+
+  font-family: "Poppins";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 9px;
+  width: auto;
+  height: auto;
+  border-radius: 20px 20px 20px 0px;
+  display: flex;
+  background: #d0ece8;
+}
+.community_all_frame .article_tabs {
+  width: 100%;
+  height: 94px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(228, 228, 228, 0.83);
+}
+.article_main {
+  width: 100%;
+  height: 1150px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.community_page .article_bott {
+  margin-top: 20px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.community_page .article_bott .article_img_bg {
+  position: relative;
+  width: 50%;
+  height: 295px;
+  display: flex;
+  border-radius: 0px 90px 0px 0px;
+  background-size: cover;
+  background: url("/public/community/cute_girl.jpeg");
+}
+.community_page .article_bott .article_desc {
+  width: 50%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+}
+.all_article_box {
+  display: flex;
+  width: auto;
+  height: auto;
+  border-radius: 30px;
+  background: #2a3a41;
+}
+.all_article_box .all_article_img {
+  width: 155px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 30px 0px 0px 30px;
+}
+.all_article_box .all_article_author_user {
+  width: 70px;
+  height: 19px;
+  flex-shrink: 0;
+  color: #fff;
+  padding-left: 5px;
+  font-family: "Poppins,san-serif";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+.all_article_box .all_article_txt {
+  width: 282px;
+  flex-shrink: 0;
+  color: #e3c08d;
+  font-family: "Poppins";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.all_article_info_txt {
+  width: 124px;
+  color: #fff;
+
+  font-family: "Poppins";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}

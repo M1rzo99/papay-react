@@ -5,7 +5,6 @@ import { Box, Button, Stack } from "@mui/material";
 const pauseOrders = [
   [1, 2, 3],
   [1, 2, 3],
-  [1, 2, 3],
 ];
 
 export default function PauseOrders(props: any) {
