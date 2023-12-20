@@ -58,7 +58,6 @@ function App() {
         </Route>
 
         <Route path="/">
-          {/* <Car /> */}
           <HomePage />
         </Route>
       </Switch>

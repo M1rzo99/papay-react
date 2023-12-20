@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "@mui/material";
 import { Statistics } from "./statistics";
 import { TopRestaurants } from "./topRestaurants";
@@ -10,6 +10,14 @@ import { Recommindations } from "./recommindations";
 import "../../../css/home.css";
 
 export function HomePage() {
+  useEffect(() => {
+    console.log("componenetDidMount = Malumotlarni olish");
+
+    return () => {
+      console.log("componenetWillMount process");
+    };
+  }, []); // componenet birinchi mount bolganda ishga tushadi
+
   return (
     <div className="homepage">
       <Statistics />
