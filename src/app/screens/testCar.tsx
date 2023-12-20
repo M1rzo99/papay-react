@@ -20,7 +20,7 @@ class Car extends Component {
   }
 
   componentWillUnmount() {
-    // runs COmponenet
+    // runs after Componenet Unmount
     console.log("ranComponent Will Mount");
   }
 
