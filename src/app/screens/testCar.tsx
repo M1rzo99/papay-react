@@ -14,6 +14,18 @@ class Car extends Component {
   changeColor = () => {
     this.setState({ color: "BLUE", model: "MASERATTI" });
   };
+  componentDidMount() {
+    // runs  after first render = Retrieve data from Bakend service
+    console.log("ranComponentDidMount");
+  }
+
+  componentWillUnmount() {
+    // runs COmponenet
+    console.log("ranComponent Will Mount");
+  }
+
+  componentDidUpdate() {}
+
   render() {
     return (
       <div>
