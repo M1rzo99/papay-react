@@ -2,14 +2,14 @@ import { Restaurant } from "./user";
 import { Product } from "./product";
 import { boArticle } from "./boArticles";
 
-export interface AppRooState {
+export interface AppRootState {
   homePage: HomePageState;
 }
 export interface HomePageState {
   topRestaurants: Restaurant[];
   bestRestaurants: Restaurant[];
   trendProducts: Product[];
-  besBoArticles: boArticle[];
+  bestBoArticles: boArticle[];
   trendBoArticles: boArticle[];
   newsBoArticles: boArticle[];
 }
