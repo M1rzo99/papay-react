@@ -10,13 +10,13 @@ import { Recommindations } from "./recommindations";
 import "../../../css/home.css";
 
 export function HomePage() {
-  useEffect(() => {
-    console.log("componenetDidMount = Malumotlarni olish");
+  // useEffect(() => {
+  //   console.log("componenetDidMount = Malumotlarni olish");
 
-    return () => {
-      console.log("componenetWillMount process");
-    };
-  }, []); // componenet birinchi mount bolganda ishga tushadi
+  //   return () => {
+  //     console.log("componenetWillMount process");
+  //   };
+  // }, []); // componenet birinchi mount bolganda ishga tushadi
 
   return (
     <div className="homepage">
