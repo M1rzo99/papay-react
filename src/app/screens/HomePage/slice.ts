@@ -17,30 +17,30 @@ const HomePageSlice = createSlice({
     setTopRestaurants: (state, action) => {
       state.topRestaurants = action.payload;
     },
-    bestRestaurants: (state, action) => {
+    setBestRestaurants: (state, action) => {
       state.bestRestaurants = action.payload;
     },
-    trendProducts: (state, action) => {
+    setTrendProducts: (state, action) => {
       state.trendProducts = action.payload;
     },
-    besBoArticles: (state, action) => {
+    setBestBoArticles: (state, action) => {
       state.bestBoArticles = action.payload;
     },
-    trendBoArticles: (state, action) => {
+    setTrendBoArticles: (state, action) => {
       state.trendBoArticles = action.payload;
     },
-    newsBoArticles: (state, action) => {
+    setNewsBoArticles: (state, action) => {
       state.newsBoArticles = action.payload;
     },
   },
 });
 export const {
   setTopRestaurants,
-  bestRestaurants,
-  trendProducts,
-  trendBoArticles,
-  newsBoArticles,
-  besBoArticles,
+  setBestRestaurants,
+  setTrendProducts,
+  setTrendBoArticles,
+  setNewsBoArticles,
+  setBestBoArticles,
 } = HomePageSlice.actions;
 
 // HomaPageSliceni Storage ga ulash

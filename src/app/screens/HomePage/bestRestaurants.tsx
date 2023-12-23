@@ -16,10 +16,25 @@ import {
 import { Box, Button, Container, Stack } from "@mui/material";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import CallIcon from "@mui/icons-material/Call";
-
 import React from "react";
 
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { retrieveBestRestaurants } from "../../screens/HomePage/selector";
+import { serviceApi } from "../../../lib/config";
+import { Restaurant } from "../../../types/user";
+
+//REDUX SELECTOR
+const bestRestaurantRetriver = createSelector(
+  retrieveBestRestaurants,
+  (bestRestaurants) => ({
+    bestRestaurants,
+  })
+);
+
 export function BestRestaurants() {
+  // Initialization
+  const { bestRestaurants } = useSelector(bestRestaurantRetriver);
   return (
     <div className="best_restaurant_frame">
       <img
@@ -34,9 +49,10 @@ export function BestRestaurants() {
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Box className="category_title">Zo'r Restaurantlar</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"}>
-            <CssVarsProvider>
-              {[1, 2, 3, 4].map(() => {
-                return (
+            {bestRestaurants.map((ele: Restaurant) => {
+              const image_path = `${serviceApi}/${ele.mb_image}`;
+              return (
+                <CssVarsProvider>
                   <Card
                     variant="outlined"
                     sx={{
@@ -48,7 +64,7 @@ export function BestRestaurants() {
                   >
                     <CardOverflow>
                       <AspectRatio ratio={1}>
-                        <img src={"restaurant/burak.jpeg"} alt="" />
+                        <img src={image_path} alt="" />
                       </AspectRatio>
                       <IconButton
                         aria-label="Like minimal photography"
@@ -69,7 +85,7 @@ export function BestRestaurants() {
                       </IconButton>
                     </CardOverflow>
                     <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
-                      Texas De Brazil restaurant
+                      {ele.mb_nick} restaurant
                     </Typography>
 
                     <Typography level="body-md" sx={{ mt: 0.5, mb: 1 }}>
@@ -78,7 +94,7 @@ export function BestRestaurants() {
                         startDecorator={<LocationOnRoundedIcon />}
                         textColor="neutral.700"
                       >
-                        Tashkent, Yunus Abad 4-1
+                        {ele.mb_address}
                       </Link>
                     </Typography>
 
@@ -88,7 +104,7 @@ export function BestRestaurants() {
                         startDecorator={<CallIcon />}
                         textColor="neutral.700"
                       >
-                        +99890 7314578
+                        {ele.mb_phone}
                       </Link>
                     </Typography>
                     <CardOverflow
@@ -111,7 +127,7 @@ export function BestRestaurants() {
                             display: "flex",
                           }}
                         >
-                          100{" "}
+                          {ele.mb_views}
                           <Visibility
                             sx={{ fontSize: 20, marginLeft: "5px" }}
                           />
@@ -125,15 +141,15 @@ export function BestRestaurants() {
                             display: "flex",
                           }}
                         >
-                          <div>500</div>
+                          <div>{ele.mb_likes}</div>
                           <Favorite sx={{ fontSize: 20, marginLeft: "5px" }} />
                         </Typography>
                       </Typography>
                     </CardOverflow>
                   </Card>
-                );
-              })}
-            </CssVarsProvider>
+                </CssVarsProvider>
+              );
+            })}
           </Stack>
           <Stack
             flexDirection={"row"}
