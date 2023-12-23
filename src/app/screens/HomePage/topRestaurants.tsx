@@ -10,8 +10,24 @@ import { CssVarsProvider } from "@mui/joy/styles";
 import { CardOverflow, IconButton } from "@mui/joy";
 import { Favorite } from "@mui/icons-material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+// Redux
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { retrieveTopRestaurants } from "../../screens/HomePage/selector";
+import { Restaurant } from "../../../types/user";
+import { serviceApi } from "../../../lib/config";
+
+//REDUX SELECTOR
+const topRestaurantRetriver = createSelector(
+  retrieveTopRestaurants,
+  (topRestaurants) => ({
+    topRestaurants,
+  })
+);
 
 export function TopRestaurants() {
+  const { topRestaurants } = useSelector(topRestaurantRetriver);
+  console.log("toprestaurant:::", topRestaurants);
   return (
     <div className="top_restaurant_frame">
       <Container>
@@ -22,9 +38,10 @@ export function TopRestaurants() {
         >
           <Box className="category_title">TOP Restauranlar</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"} m={"16px"}>
-            <CssVarsProvider>
-              {[1, 2, 3, 4].map(() => {
-                return (
+            {topRestaurants.map((ele: Restaurant) => {
+              const image_path = `${serviceApi}/${ele.mb_image}`;
+              return (
+                <CssVarsProvider key={ele._id}>
                   <Card
                     sx={{
                       minHeight: 430,
@@ -34,7 +51,7 @@ export function TopRestaurants() {
                     }}
                   >
                     <CardCover>
-                      <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
+                      <img src={image_path} loading="lazy" alt="" />
                     </CardCover>
 
                     <CardCover
@@ -50,14 +67,14 @@ export function TopRestaurants() {
                         mb={1}
                         textColor="#fff"
                       >
-                        Texas De Brazil
+                        {ele.mb_nick}
                       </Typography>
 
                       <Typography
                         startDecorator={<LocationOnRoundedIcon />}
                         textColor="neutral.300"
                       >
-                        Tashkent, Yunus Abad 4-1
+                        {ele.mb_address}
                       </Typography>
                     </CardContent>
 
@@ -85,7 +102,14 @@ export function TopRestaurants() {
                           color: "rgba(0,0,0,.4)",
                         }}
                       >
-                        <Favorite style={{ fill: "white" }} />
+                        <Favorite
+                          style={{
+                            fill:
+                              ele?.me_liked && ele?.me_liked[0] // my_favorite
+                                ? "red"
+                                : "white",
+                          }}
+                        />
                       </IconButton>
 
                       <Typography display={"flex"} gap={"10px"}>
@@ -98,7 +122,7 @@ export function TopRestaurants() {
                             display: "flex",
                           }}
                         >
-                          100{" "}
+                          {ele.mb_views}
                           <VisibilityIcon
                             sx={{ fontSize: 20, marginLeft: "5px" }}
                           />
@@ -113,16 +137,16 @@ export function TopRestaurants() {
                             display: "flex",
                           }}
                         >
-                          <div>50</div>
+                          <div>{ele.mb_likes}</div>
 
                           <Favorite sx={{ fontSize: 20, marginLeft: "5px" }} />
                         </Typography>
                       </Typography>
                     </CardOverflow>
                   </Card>
-                );
-              })}
-            </CssVarsProvider>
+                </CssVarsProvider>
+              );
+            })}
           </Stack>
         </Stack>
       </Container>

@@ -19,33 +19,29 @@ import {
 } from "../../screens/HomePage/slice";
 import { retrieveTopRestaurants } from "../../screens/HomePage/selector";
 import { Restaurant } from "../../../types/user";
+import RestaurantService from "../../apiServices/restaurantApiService";
 
 //  REDUX SLICE
 const actionDispatch = (dispach: Dispatch) => ({
   setTopRestaurants: (data: Restaurant[]) => dispach(setTopRestaurants(data)),
 });
 
-//REDUX SELECTOR
-const topRestaurantRetriver = createSelector(
-  retrieveTopRestaurants,
-  (topRestaurants) => ({
-    topRestaurants,
-  })
-);
-
 export function HomePage() {
   // INITIALIZATIONS
   const { setTopRestaurants } = actionDispatch(useDispatch());
-  const { topRestaurants } = useSelector(topRestaurantRetriver);
-
-  console.log("toprestaurant:::", topRestaurants);
 
   // selector: store => data -- storagedan olgan ma'lumotni o'qiydi
 
   useEffect(() => {
-    // backendan data request => data
+    // backendan data request => data 12/23
+    const restaurantService = new RestaurantService();
 
-    setTopRestaurants([]);
+    restaurantService
+      .getTopRestaurants()
+      .then((data) => {
+        setTopRestaurants(data);
+      })
+      .catch((err) => console.log(err));
 
     // backend olingan datani storage ga yozadi: slice: data=>store
   }, []);
