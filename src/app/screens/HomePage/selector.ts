@@ -1,8 +1,7 @@
 // Malumot o'quvchi
 
-import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from "reselect";
 import { AppRootState } from "../../../types/screen";
-import { HomePage } from ".";
 
 const selectHomePage = (state: AppRootState) => state.homePage;
 
