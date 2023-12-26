@@ -9,7 +9,7 @@ class MemberApiService {
   constructor() {
     this.path = serverApi;
   }
-
+  // For Login
   public async loginRequest(login_data: any) {
     try {
       const result = await axios.post(this.path + "/login", login_data, {
@@ -25,6 +25,25 @@ class MemberApiService {
       return member;
     } catch (err: any) {
       console.log(`ERROR::: loginRequest ${err.message}`);
+      throw err;
+    }
+  }
+  // For SignUp
+  public async signUpRequest(signup_data: any) {
+    try {
+      const result = await axios.post(this.path + "/signup", signup_data, {
+        withCredentials: true,
+      });
+
+      console.log("state::: ", result.data.state);
+      assert.ok(result?.data, Definer.general_err1);
+      assert.ok(result?.data.state != "fail", result?.data?.message);
+
+      const member: Member = result.data.data;
+      localStorage.setItem("member_data", JSON.stringify(member));
+      return member;
+    } catch (err: any) {
+      console.log(`ERROR::: signUpRequest ${err.message}`);
       throw err;
     }
   }

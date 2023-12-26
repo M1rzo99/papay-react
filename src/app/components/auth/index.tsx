@@ -54,6 +54,31 @@ export default function AuthenticationModal(props: any) {
     mb_password = e.target.value;
   };
 
+  // For signUp
+  const handleSignUpRequest = async () => {
+    try {
+      const is_fulfilled = mb_nick != "" && mb_password != "" && mb_phone != 0;
+      assert.ok(is_fulfilled, Definer.input_err1);
+
+      const signup_data = {
+        mb_nick: mb_nick,
+        mb_phone: mb_phone,
+        mb_password: mb_password,
+      };
+
+      const memberApiService = new MemebrApiService();
+      await memberApiService.signUpRequest(signup_data);
+
+      props.handleSignUpClose();
+      //   window.location.reload();
+    } catch (err) {
+      console.log(err);
+      //   props.handleSignUpClose(); //err bolganda signUpni yopib yuboradi
+      SweetErrorHandling(err).then();
+    }
+  };
+
+  // for Login
   const handleLoginRequest = async () => {
     try {
       const is_fulfilled = mb_nick != "" && mb_password != "";
@@ -71,7 +96,7 @@ export default function AuthenticationModal(props: any) {
       //   window.location.reload();
     } catch (err) {
       console.log(err);
-      props.handleLoginCase(); //err bolishi mn
+      //   props.handleLoginCase(); //err bolishi mn
       SweetErrorHandling(err).then();
     }
   };
@@ -100,8 +125,9 @@ export default function AuthenticationModal(props: any) {
             <MadalImg src={"/auth/password.jpeg"} alt="camera" />
             <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
               <h2>SignUp Form</h2>
+
               <TextField
-                // onChange ={}
+                onChange={handleuserName}
                 sx={{ marginTop: "7px" }}
                 id="outlined-basic"
                 label="username"
@@ -109,20 +135,22 @@ export default function AuthenticationModal(props: any) {
               />
 
               <TextField
-                //onChange={}
+                onChange={handlePhone}
                 sx={{ my: "17px" }}
                 id="outlined-basic"
                 label="phone number"
                 variant="outlined"
               />
+
               <TextField
-                //onChange={}
+                onChange={handlePassword}
                 id="outlined-basic"
                 label="password"
                 variant="outlined"
               />
+
               <Fab
-                //onClick={}
+                onClick={handleSignUpRequest}
                 sx={{ marginTop: "30px", width: "120px" }}
                 variant="extended"
                 color="primary"
