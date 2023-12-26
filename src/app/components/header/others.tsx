@@ -1,6 +1,13 @@
-import { Badge, Box, Button, Container, IconButton, Stack } from "@mui/material"
-import React from "react"
-import { NavLink } from "react-router-dom"
+import {
+  Badge,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Stack,
+} from "@mui/material";
+import React from "react";
+import { NavLink } from "react-router-dom";
 export function NavbarOthers(props: any) {
   return (
     <div className="format_others home_navbar">
@@ -65,6 +72,7 @@ export function NavbarOthers(props: any) {
               <Button
                 variant="contained"
                 style={{ color: "#ffffff", background: "#1976d2" }}
+                onClick={props.handleLoginOpen}
               >
                 KIRISH
               </Button>
@@ -73,5 +81,5 @@ export function NavbarOthers(props: any) {
         </Stack>
       </Container>
     </div>
-  )
+  );
 }

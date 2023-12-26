@@ -9,7 +9,7 @@ import { MemberFollowing } from "./memberFollowing";
 import TuiViwer from "../../components/TuiEditor/TuiViwer";
 
 export function VisitOtherPage(props: any) {
-  //****Initializations ****//
+  /*INITIALIZATION */
   const [value, setValue] = React.useState("1");
   // ****Handlers****//
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {

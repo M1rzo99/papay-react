@@ -33,7 +33,7 @@ const bestRestaurantRetriver = createSelector(
 );
 
 export function BestRestaurants() {
-  // Initialization
+  // INITIALIZATION
   const { bestRestaurants } = useSelector(bestRestaurantRetriver);
   return (
     <div className="best_restaurant_frame">

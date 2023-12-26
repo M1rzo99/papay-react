@@ -12,7 +12,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 export function HelpPage() {
-  /* INITIALIZATIONS */
+  /* INITIALIZATION */
   const [value, setValue] = React.useState("1");
   const faq = [
     {

@@ -11,7 +11,7 @@ import { TabContext } from "@mui/lab";
 import Marginer from "../../components/marginer";
 
 export function OrdersPage() {
-  /* INITIALIZATIONS */
+  /* INITIALIZATION */
   const [value, setValue] = useState("1");
 
   /*    HANDLERS   */
