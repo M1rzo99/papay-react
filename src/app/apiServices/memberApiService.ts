@@ -1,24 +1,22 @@
 import { serverApi } from "../../lib/config";
 import axios from "axios";
 import assert from "assert";
-import Definer from "../../lib/Definer";
+import { Definer } from "../../lib/Definer";
 import { Member } from "../../types/user";
-
 class MemberApiService {
   private readonly path: string;
+
   constructor() {
     this.path = serverApi;
   }
-  // For Login
   public async loginRequest(login_data: any) {
     try {
       const result = await axios.post(this.path + "/login", login_data, {
         withCredentials: true,
       });
-
-      console.log("state::: ", result.data.state);
+      console.log("state:", result.data.state);
       assert.ok(result?.data, Definer.general_err1);
-      assert.ok(result?.data.state != "fail", result?.data?.message);
+      assert.ok(result?.data?.state != "fail", result?.data?.message);
 
       const member: Member = result.data.data;
       localStorage.setItem("member_data", JSON.stringify(member));
@@ -28,24 +26,40 @@ class MemberApiService {
       throw err;
     }
   }
-  // For SignUp
-  public async signUpRequest(signup_data: any) {
+
+  public async signupRequest(signup_data: any) {
     try {
       const result = await axios.post(this.path + "/signup", signup_data, {
         withCredentials: true,
       });
-
-      console.log("state::: ", result.data.state);
+      console.log("state:", result.data.state);
       assert.ok(result?.data, Definer.general_err1);
-      assert.ok(result?.data.state != "fail", result?.data?.message);
+      assert.ok(result?.data?.state != "fail", result?.data?.message);
 
       const member: Member = result.data.data;
       localStorage.setItem("member_data", JSON.stringify(member));
       return member;
     } catch (err: any) {
-      console.log(`ERROR::: signUpRequest ${err.message}`);
+      console.log(`ERROR::: signupRequest ${err.message}`);
+      throw err;
+    }
+  }
+
+  public async logOutRequest() {
+    try {
+      const result = await axios.get(this.path + "/logout", {
+        withCredentials: true,
+      });
+      assert.ok(result?.data, Definer.general_err1);
+      assert.ok(result?.data?.state != "fail", result?.data?.message);
+      console.log("result:::", result);
+      const logout_result = result.data.state;
+      return logout_result == "success";
+    } catch (err: any) {
+      console.log(`ERROR::: logOutRequest ${err.message}`);
       throw err;
     }
   }
 }
+
 export default MemberApiService;

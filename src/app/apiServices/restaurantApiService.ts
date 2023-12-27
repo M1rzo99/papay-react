@@ -1,42 +1,46 @@
 import axios from "axios";
 import assert from "assert";
 import { serverApi } from "../../lib/config";
-import Definer from "../../lib/Definer";
+import { Definer } from "../../lib/Definer";
 import { Restaurant } from "../../types/user";
 import { serchObj } from "../../types/others";
-// import Definer
 
-class RestaurantService {
+class RestaurantApiService {
   private readonly path: string;
+
   constructor() {
     this.path = serverApi;
   }
+
   async getTopRestaurants() {
     try {
-      const url = `/restaurants?page=1&limit=4&order=top`,
+      const url = `/restaurants?order=top&page=1&limit=4`,
         result = await axios.get(this.path + url, { withCredentials: true });
       assert.ok(result, Definer.general_err1);
-      console.log("state", result.data.state);
-      const top_restaurant: Restaurant[] = result.data.data;
-      return top_restaurant;
+
+      console.log("state:", result.data.state);
+      const top_restaurants: Restaurant[] = result.data.data;
+      return top_restaurants;
     } catch (err: any) {
-      console.log(`ERROR::: getTopRestaurants ${err.message}`);
+      console.log(`ERROR ::: getTopRestaurants ${err.message}`);
       throw err;
     }
   }
 
   async getRestaurants(data: serchObj) {
     try {
-      const url = `/restaurants?page=${data.page}&limit=${data.limit}&order=${data.order}`,
+      const url = `/restaurants?order=${data.order}&page=${data.page}&limit=${data.limit}`,
         result = await axios.get(this.path + url, { withCredentials: true });
       assert.ok(result, Definer.general_err1);
-      console.log("state", result.data.state);
-      const restaurant: Restaurant[] = result.data.data;
-      return restaurant;
+
+      console.log("state:", result.data.state);
+      const restaurants: Restaurant[] = result.data.data;
+      return restaurants;
     } catch (err: any) {
-      console.log(`ERROR::: getRestaurants ${err.message}`);
+      console.log(`ERROR ::: getRestaurants ${err.message}`);
       throw err;
     }
   }
 }
-export default RestaurantService;
+
+export default RestaurantApiService;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import assert from "assert";
 import { serverApi } from "../../lib/config";
-import Definer from "../../lib/Definer";
+import { Definer } from "../../lib/Definer";
 import { ProductSerchObj } from "../../types/others";
 import { Product } from "../../types/product";
 
@@ -11,6 +11,7 @@ class ProductApiService {
   constructor() {
     this.path = serverApi;
   }
+
   async getTargetProducts(data: ProductSerchObj) {
     try {
       const url = "/products",
@@ -18,14 +19,15 @@ class ProductApiService {
           withCredentials: true,
         });
       assert.ok(result, Definer.general_err1);
-      console.log("state:::", result.data.state);
+
+      console.log("state:", result.data.satate);
       const products: Product[] = result.data.data;
       return products;
     } catch (err: any) {
-      console.log(`ERROR :::getTargetProducts${err.message} `);
-
+      console.log(`ERROR ::: getTargetProducts ${err.message}`);
       throw err;
     }
   }
 }
+
 export default ProductApiService;

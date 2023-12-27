@@ -1,16 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
+import Modal from "@material-ui/core/Modal";
 import Fade from "@material-ui/core/Fade";
-import { Fab, Stack, TextField } from "@mui/material";
+import { TextField, Stack, Fab } from "@mui/material";
 import styled from "styled-components";
-import LoginIcon from "@mui/icons-material/Login";
 import { Login } from "@mui/icons-material";
-import { SweetErrorHandling } from "../../../lib/sweetAlert";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import assert from "assert";
-import Definer from "../../../lib/Definer";
-import MemebrApiService from "../../apiServices/memberApiService";
+import { Definer } from "../../../lib/Definer";
+import MemberApiService from "../../apiServices/memberApiService";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -20,84 +19,80 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000 ",
+    border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 2, 2),
   },
 }));
-const MadalImg = styled.img`
+
+const modelling = styled.img`
   width: 62%;
   height: 100%;
   border-radius: 10px;
   background: #000;
-  margin-top: 9px;
+  margin-top: 5px;
   margin-left: 10px;
 `;
 
-export default function AuthenticationModal(props: any) {
-  /*   INITIALIZATION    */
+export default function AuthentificationModal(props: any) {
+  // INITIALIZATIONS
   const classes = useStyles();
-  let mb_nick: string,
-    mb_phone: number = 0,
-    mb_password: string;
+  let mb_nick: string = "",
+    mb_password: string = "",
+    mb_phone: number = 0;
 
-  /*  HANDLERS    */
-  const handleuserName = (e: any) => {
+  /** HANDLERS */
+  const handleUsername = (e: any) => {
     mb_nick = e.target.value;
   };
-
   const handlePhone = (e: any) => {
     mb_phone = e.target.value;
   };
-
   const handlePassword = (e: any) => {
     mb_password = e.target.value;
   };
 
-  // For signUp
-  const handleSignUpRequest = async () => {
+  const handleSignupRequest = async () => {
     try {
-      const is_fulfilled = mb_nick != "" && mb_password != "" && mb_phone != 0;
-      assert.ok(is_fulfilled, Definer.input_err1);
+      const is_fullfilled =
+        mb_nick !== "" && mb_password !== "" && mb_phone !== 0;
+      assert.ok(is_fullfilled, Definer.input_err1);
 
-      const signup_data = {
+      const sign_data = {
         mb_nick: mb_nick,
         mb_phone: mb_phone,
         mb_password: mb_password,
       };
 
-      const memberApiService = new MemebrApiService();
-      await memberApiService.signUpRequest(signup_data);
+      const memberApiService = new MemberApiService();
+      await memberApiService.signupRequest(sign_data);
 
-      props.handleSignUpClose();
-      //   window.location.reload();
+      props.handleSignupClose();
+      window.location.reload();
     } catch (err) {
       console.log(err);
-      //   props.handleSignUpClose(); //err bolganda signUpni yopib yuboradi
-      SweetErrorHandling(err).then();
+      sweetErrorHandling(err).then();
     }
   };
-
-  // for Login
   const handleLoginRequest = async () => {
     try {
-      const is_fulfilled = mb_nick != "" && mb_password != "";
-      assert.ok(is_fulfilled, Definer.input_err1);
+      const is_fullfilled = mb_nick !== "" && mb_password !== "";
+      assert.ok(is_fullfilled, Definer.input_err1);
 
       const login_data = {
         mb_nick: mb_nick,
         mb_password: mb_password,
       };
 
-      const memberApiService = new MemebrApiService();
+      const memberApiService = new MemberApiService();
       await memberApiService.loginRequest(login_data);
 
       props.handleLoginClose();
-      //   window.location.reload();
+      window.location.reload();
     } catch (err) {
       console.log(err);
-      //   props.handleLoginCase(); //err bolishi mn
-      SweetErrorHandling(err).then();
+      props.handleLoginClose();
+      sweetErrorHandling(err).then();
     }
   };
 
@@ -106,67 +101,64 @@ export default function AuthenticationModal(props: any) {
       {/*@ts-ignore */}
       <Modal
         aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-describtion"
+        aria-describedby="transition-modal-description"
         className={classes.modal}
-        open={props.signUpOpen}
-        onClose={props.handleSignUpClose}
+        open={props.signupOpen}
+        onClose={props.handleSignupClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={props.signUpOpen}>
+        <Fade in={props.signupOpen}>
           <Stack
             className={classes.paper}
             direction={"row"}
-            sx={{ width: "800px" }}
+            sx={{ width: "750px" }}
           >
-            <MadalImg src={"/auth/password.jpeg"} alt="camera" />
+            <img src="/auth/password.jpg" alt="camera" />
             <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
-              <h2>SignUp Form</h2>
-
+              <h2>Signup Form</h2>
               <TextField
-                onChange={handleuserName}
+                onChange={handleUsername}
                 sx={{ marginTop: "7px" }}
                 id="outlined-basic"
                 label="username"
                 variant="outlined"
               />
-
               <TextField
                 onChange={handlePhone}
-                sx={{ my: "17px" }}
+                sx={{ marginTop: "7px" }}
                 id="outlined-basic"
                 label="phone number"
                 variant="outlined"
               />
-
               <TextField
                 onChange={handlePassword}
+                sx={{ marginTop: "7px" }}
                 id="outlined-basic"
                 label="password"
                 variant="outlined"
               />
 
               <Fab
-                onClick={handleSignUpRequest}
-                sx={{ marginTop: "30px", width: "120px" }}
+                onClick={handleSignupRequest}
+                sx={{ mt: "30px", width: "120px" }}
                 variant="extended"
                 color="primary"
               >
-                <LoginIcon sx={{ mr: 1 }} />
+                <Login sx={{ mr: 1 }} />
                 Signup
               </Fab>
             </Stack>
           </Stack>
         </Fade>
       </Modal>
-
       {/*@ts-ignore */}
       <Modal
         aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-describtion"
+        aria-describedby="transition-modal-description"
         className={classes.modal}
         open={props.loginOpen}
         onClose={props.handleLoginClose}
@@ -180,38 +172,33 @@ export default function AuthenticationModal(props: any) {
           <Stack
             className={classes.paper}
             direction={"row"}
-            sx={{ width: "700px" }}
+            sx={{ width: "650px" }}
           >
-            <MadalImg src={"/auth/password.jpeg"} alt="camera" />
-            <Stack
-              sx={{
-                marginLeft: "65px",
-                marginTop: "25px",
-                alignItems: "center",
-              }}
-            >
+            <img src="/auth/password.jpg" alt="camera" />
+            <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
               <h2>Login Form</h2>
               <TextField
-                onChange={handleuserName}
-                sx={{ my: "10px" }}
+                onChange={handleUsername}
+                sx={{ marginTop: "7px" }}
                 id="outlined-basic"
                 label="username"
                 variant="outlined"
               />
-
               <TextField
                 onChange={handlePassword}
+                sx={{ marginTop: "7px" }}
                 id="outlined-basic"
                 label="password"
                 variant="outlined"
               />
+
               <Fab
                 onClick={handleLoginRequest}
-                sx={{ marginTop: "27px", width: "120px" }}
+                sx={{ mt: "30px", width: "120px" }}
                 variant="extended"
                 color="primary"
               >
-                <LoginIcon sx={{ mr: 1 }} />
+                <Login sx={{ mr: 1 }} />
                 Login
               </Fab>
             </Stack>
