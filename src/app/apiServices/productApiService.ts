@@ -20,7 +20,7 @@ class ProductApiService {
         });
       assert.ok(result, Definer.general_err1);
 
-      console.log("state:", result.data.satate);
+      console.log("state:", result.data.state);
       const products: Product[] = result.data.data;
       return products;
     } catch (err: any) {
