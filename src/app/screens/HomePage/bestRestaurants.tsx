@@ -215,7 +215,7 @@ export function BestRestaurants() {
             style={{ width: "100%", marginTop: "16px" }}
           >
             <Button
-              onClick={goRestaurantHandler}
+              onClick={goRestaurantHandler} // rsetaurant page olib otadi
               style={{
                 background: "#1976d2",
                 color: "#ffffff",
