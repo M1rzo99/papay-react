@@ -1,7 +1,6 @@
-// Ma'lumot yetkazuvchi storagega
 import { createSlice } from "@reduxjs/toolkit";
 import { RestaurantPageState } from "../../../types/screen";
-import exp from "constants";
+
 const initialState: RestaurantPageState = {
   targetRestaurants: [],
   randomRestaurants: [],
@@ -9,6 +8,7 @@ const initialState: RestaurantPageState = {
   targetProducts: [],
   chosenProduct: null,
 };
+
 const restaurantPageSlice = createSlice({
   name: "restaurantPage",
   initialState,
@@ -19,7 +19,7 @@ const restaurantPageSlice = createSlice({
     setRandomRestaurants: (state, action) => {
       state.randomRestaurants = action.payload;
     },
-    setChosenRestaurant: (state, action) => {
+    setChosenRestaurants: (state, action) => {
       state.chosenRestaurant = action.payload;
     },
     setTargetProducts: (state, action) => {
@@ -34,9 +34,10 @@ const restaurantPageSlice = createSlice({
 export const {
   setTargetRestaurants,
   setRandomRestaurants,
-  setChosenRestaurant,
+  setChosenRestaurants,
   setTargetProducts,
   setChosenProduct,
 } = restaurantPageSlice.actions;
+
 const RestaurantPageReducer = restaurantPageSlice.reducer;
 export default RestaurantPageReducer;

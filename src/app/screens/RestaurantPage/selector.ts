@@ -1,30 +1,25 @@
-// Malumot o'quvchi
 import { createSelector } from "reselect";
 import { AppRootState } from "../../../types/screen";
 
-const selectrestaurantPage = (state: AppRootState) => state.restaurantPage;
+const selectRestaurantPage = (state: AppRootState) => state.restaurantPage;
 
-export const retriveTargetRestaurants = createSelector(
-  selectrestaurantPage,
+export const retrieveTargetRestaurants = createSelector(
+  selectRestaurantPage,
   (RestaurantPage) => RestaurantPage.targetRestaurants
 );
-
-export const retriveRandomRestaurants = createSelector(
-  selectrestaurantPage,
+export const retrieveRandomRestaurants = createSelector(
+  selectRestaurantPage,
   (RestaurantPage) => RestaurantPage.randomRestaurants
 );
-
-export const retriveChosenRestaurants = createSelector(
-  selectrestaurantPage,
+export const retrieveChosenRestaurants = createSelector(
+  selectRestaurantPage,
   (RestaurantPage) => RestaurantPage.chosenRestaurant
 );
-
-export const retriveTargetProducts = createSelector(
-  selectrestaurantPage,
+export const retrieveTargetProducts = createSelector(
+  selectRestaurantPage,
   (RestaurantPage) => RestaurantPage.targetProducts
 );
-
-export const retriveChosenDish = createSelector(
-  selectrestaurantPage,
+export const retrieveChosenDish = createSelector(
+  selectRestaurantPage,
   (RestaurantPage) => RestaurantPage.chosenProduct
 );

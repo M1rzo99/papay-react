@@ -1,4 +1,4 @@
-export interface serchObj {
+export interface SerchObj {
   page: number;
   limit: number;
   order: string;
