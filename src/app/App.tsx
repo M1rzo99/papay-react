@@ -22,7 +22,7 @@ import {
   sweetFailureProvider,
   sweetTopSmallSuccessAlert,
 } from "../lib/sweetAlert";
-import { Definer } from "../lib/Definer";
+import Definer from "../lib/Definer";
 import assert from "assert";
 import MemberApiService from "./apiServices/memberApiService";
 // import "../app/apiServices/verify";

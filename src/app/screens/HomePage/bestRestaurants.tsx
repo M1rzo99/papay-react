@@ -23,6 +23,9 @@ import { createSelector } from "reselect";
 import { retrieveBestRestaurants } from "../../screens/HomePage/selector";
 import { serverApi } from "../../../lib/config";
 import { Restaurant } from "../../../types/user";
+import assert from "assert";
+import Definer from "../../../lib/Definer";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
 
 //REDUX SELECTOR
 const bestRestaurantRetriver = createSelector(
@@ -31,6 +34,16 @@ const bestRestaurantRetriver = createSelector(
     bestRestaurants,
   })
 );
+
+/*    HANDLERS   */
+const targetLikeTop = async (e: any, id: string) => {
+  try {
+    assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+  } catch (err: any) {
+    console.log("targetLikeTop, ERROR:::", err);
+    sweetErrorHandling(err).then(); // qaytgan data bn abrobotka qilish shart emas
+  }
+};
 
 export function BestRestaurants() {
   // INITIALIZATION
@@ -81,7 +94,16 @@ export function BestRestaurants() {
                           color: "rgba(0,0,0,.4)",
                         }}
                       >
-                        <Favorite style={{ color: "white" }} />
+                        <Favorite
+                          onClick={(e) => targetLikeTop(e, ele._id)}
+                          /*@ts-ignore */
+                          style={{
+                            fill:
+                              ele?.me_liked && ele?.me_liked[0]?.my_favorite
+                                ? "red"
+                                : "white",
+                          }}
+                        />
                       </IconButton>
                     </CardOverflow>
                     <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
@@ -94,7 +116,7 @@ export function BestRestaurants() {
                         startDecorator={<LocationOnRoundedIcon />}
                         textColor="neutral.700"
                       >
-                        {ele.mb_address}
+                        {ele.mb_adress}
                       </Link>
                     </Typography>
 
