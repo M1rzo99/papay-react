@@ -88,7 +88,7 @@ export function OneRestaurant() {
       limit: 8,
       order: "createdAt",
       restaurant_mb_id: restaurant_id,
-      product_collection: "drink",
+      product_collection: "dish",
     });
 
   // const refs: any = useRef([]);
@@ -106,7 +106,15 @@ export function OneRestaurant() {
       .getTargetProducts(targetProductSearchObj)
       .then((data) => setTargetProducts(data))
       .catch((err) => console.log(err));
-  }, [targetProductSearchObj, productRebuild]);
+  }, [productRebuild]);
+
+  useEffect(() => {
+    const productService = new ProductApiService();
+    productService
+      .getTargetProducts(targetProductSearchObj)
+      .then((data) => setTargetProducts(data))
+      .catch((err) => console.log(err));
+  }, [targetProductSearchObj]);
 
   /** HANDLERS */
   const chosenRestaurantHandler = (id: string) => {
