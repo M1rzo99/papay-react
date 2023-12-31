@@ -606,6 +606,9 @@
   padding: 20px;
   width: 100%;
 }
+.restaurant_page .single_restaurant .about_left .about_left_desc span {
+  color: white;
+}
 .restaurant_page .single_restaurant .about_right {
   display: flex;
   flex-direction: column;
@@ -677,7 +680,7 @@
 
 .chosen_dish_page .chosen_dish_slider {
   width: 48%;
-  height: 581px;
+  height: 700px;
 }
 .chosen_dish_page .dish_swiper {
   --swiper-navigation-color: #fff;
