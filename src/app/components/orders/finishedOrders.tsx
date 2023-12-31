@@ -1,56 +1,68 @@
-import TabPanel from "@mui/joy/TabPanel";
-import { Box, Button, Stack } from "@mui/material";
-import React from "react";
+import { TabPanel } from "@mui/lab";
+import { Box, Stack } from "@mui/material";
 
-const finishedOreders = [
-  [1, 2, 3],
+// REDUX
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { retrieveFinishedOrders } from "../../screens/OrdersPage/selector";
+
+// REDUX SELECTOR
+const finishedOrdersRetriever = createSelector(
+  retrieveFinishedOrders,
+  (finishedOrders) => ({
+    finishedOrders,
+  })
+);
+
+const finishedOrders = [
   [1, 2, 3],
   [1, 2, 3],
 ];
 
-export default function FinishedOreders(props: any) {
+export default function FinishedOrders(props: any) {
+  // INITIALIZATIONS
+  // const { finishedOrders } = useSelector(finishedOrdersRetriever);
   return (
-    <Stack>
-      {finishedOreders?.map((order) => {
-        return (
-          <Box className={"order_main_box"}>
-            <Box className={"order_box_scrol"}>
-              {order.map((item) => {
-                const image_path = "/others/qovurma.jpeg";
-                return (
-                  <Box className={"orderName_price"}>
-                    <img src={image_path} className={"orderDishImg"} />
-                    <p className={"title_Dish"}>Qabul qilingan Ovqatlar</p>
-                    <Box className={"priceBox"}>
-                      <p style={{ marginLeft: "15px" }}>$11</p>
-                      <img
-                        style={{ marginLeft: "15px" }}
-                        src={"/icons/Close.svg"}
-                      />
-                      <p style={{ marginLeft: "15px" }}>2</p>
-                      <img
-                        style={{ marginLeft: "15px" }}
-                        src={"/icons/pause.svg"}
-                      />
-                      <p style={{ marginLeft: "15px" }}>$22</p>
+    <TabPanel value={"3"}>
+      <Stack>
+        {finishedOrders?.map((order) => {
+          return (
+            <Box className="order_main_box">
+              <Box className="order_box_scroll">
+                {order.map((item) => {
+                  const image_path = "/others/qovurma.jpeg";
+                  return (
+                    <Box className="ordersName_price">
+                      <img src={image_path} className={"orderDishImg"} />
+                      <p className="titleDish">Qovurma</p>
+                      <Box className="priceBox">
+                        <p>$12</p>
+                        <img src="/icons/Close.svg" />
+                        <p>2</p>
+                        <img src="/icons/pause.svg" />
+                        <p style={{ marginLeft: "15px" }}>$24</p>
+                      </Box>
                     </Box>
-                  </Box>
-                );
-              })}
-            </Box>
-            <Box className={"total_orice_box "} sx={{ bgcolor: "crimson" }}>
-              <Box className={"boxTotal"}>
-                <p>mahsulot narxi</p>
-                <p>$11</p>
-                <p>yetkazish xizmati</p>
-                <p>$2</p>
-                <p>jami narx</p>
-                <p>22$</p>
+                  );
+                })}
+              </Box>
+
+              <Box className="total_price_box red_solid">
+                <Box className="boxTotal finish_total">
+                  <p>mahsulot narxi</p>
+                  <p>$24</p>
+                  <img src="/icons/plus.svg" style={{ marginLeft: "20px" }} />
+                  <p>Yetkazish hizmati</p>
+                  <p>$2</p>
+                  <img src="/icons/pause.svg" style={{ marginLeft: "20px" }} />
+                  <p>jami narxi</p>
+                  <p>$26</p>
+                </Box>
               </Box>
             </Box>
-          </Box>
-        );
-      })}
-    </Stack>
+          );
+        })}
+      </Stack>
+    </TabPanel>
   );
 }

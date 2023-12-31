@@ -33,8 +33,6 @@ export function OrdersPage() {
   const { setPauseorders, setProcessOrders, setFinishedorders } =
     actionDispatch(useDispatch());
   const [value, setValue] = useState("1");
-  console.log("passed here");
-  console.log("value", value);
 
   useEffect(() => {}, []);
 
