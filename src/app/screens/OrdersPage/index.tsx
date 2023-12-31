@@ -10,9 +10,33 @@ import TabPanel from "@mui/lab/TabPanel";
 import { TabContext } from "@mui/lab";
 import Marginer from "../../components/marginer";
 
+import { useDispatch } from "react-redux";
+import { createSelector } from "reselect";
+import { Dispatch } from "@reduxjs/toolkit";
+import {
+  setPauseorders,
+  setProcessOrders,
+  setFinishedorders,
+} from "../../screens/OrdersPage/slice";
+import { Order } from "../../../types/order";
+
+//REDUX SLICE
+const actionDispatch = (dispatch: Dispatch) => ({
+  setPauseorders: (data: Order[]) => dispatch(setPauseorders(data)),
+
+  setProcessOrders: (data: Order) => dispatch(setProcessOrders(data)),
+
+  setFinishedorders: (data: Order[]) => dispatch(setFinishedorders(data)),
+});
 export function OrdersPage() {
   /* INITIALIZATION */
+  const { setPauseorders, setProcessOrders, setFinishedorders } =
+    actionDispatch(useDispatch());
   const [value, setValue] = useState("1");
+  console.log("passed here");
+  console.log("value", value);
+
+  useEffect(() => {}, []);
 
   /*    HANDLERS   */
   const handleChange = (event: any, newValue: string) => {

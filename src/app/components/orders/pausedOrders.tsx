@@ -1,79 +1,85 @@
-import React from "react";
-import TabPanel from "@mui/joy/TabPanel";
+import { TabPanel } from "@mui/lab";
 import { Box, Button, Stack } from "@mui/material";
 
-const pauseOrders = [
+// REDUX
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { retrievePausedOrders } from "../../screens/OrdersPage/selector";
+
+// REDUX SELECTOR
+const pausedOrdersRetriever = createSelector(
+  retrievePausedOrders,
+  (pausedOrders) => ({
+    pausedOrders,
+  })
+);
+
+const finishedOrders = [
+  [1, 2, 3],
   [1, 2, 3],
   [1, 2, 3],
 ];
 
-export default function PauseOrders(props: any) {
+export default function PausedOrders(props: any) {
+  // INITIALIZATIONS
+  const { pausedOrders } = useSelector(pausedOrdersRetriever);
   return (
-    <Stack>
-      {pauseOrders?.map((order) => {
-        return (
-          <Box className={"order_main_box"}>
-            <Box className={"order_box_scrol"}>
-              {order.map((item) => {
-                const image_path = "/others/qovurma.jpeg";
-                return (
-                  <Box className={"orderName_price"}>
-                    <img src={image_path} className={"orderDishImg"} />
-                    <p className={"title_Dish"}>Buyurtmadagi Ovqatlar Ovqat</p>
-                    <Box className={"priceBox"}>
-                      <p style={{ marginLeft: "15px" }}>$19</p>
-                      <img
-                        style={{ marginLeft: "15px" }}
-                        src={"/icons/Close.svg"}
-                      />
-                      <p style={{ marginLeft: "15px" }}>3</p>
-                      <img
-                        style={{ marginLeft: "15px" }}
-                        src={"/icons/pause.svg"}
-                      />
-                      <p style={{ marginLeft: "15px" }}>$57</p>
+    <TabPanel value={"1"}>
+      <Stack>
+        {finishedOrders?.map((order) => {
+          return (
+            <Box className="order_main_box">
+              <Box className="order_box_scroll">
+                {order.map((item) => {
+                  const image_path = "/others/sandvich.jpeg";
+                  return (
+                    <Box className="ordersName_price">
+                      <img src={image_path} className={"orderDishImg"} />
+                      <p className="titleDish">Sandvich</p>
+                      <Box className="priceBox">
+                        <p>$7</p>
+                        <img src="/icons/Close.svg" />
+                        <p>3</p>
+                        <img src="/icons/pause.svg" />
+                        <p style={{ marginLeft: "15px" }}>$21</p>
+                      </Box>
                     </Box>
-                  </Box>
-                );
-              })}
-            </Box>
-            <Box className={"total_orice_box "} sx={{ bgcolor: "gray" }}>
-              <Box className={"boxTotal"}>
-                <p>mahsulot narxi</p>
-                <p>$6</p>
-                <img src="/icons/Plus.svg" />
-                <p>yetkazish xizmati</p>
-                <p>$3</p>
-                <p>jami narx</p>
-                <img src="/icons/Pause.svg" />
-                <p>18$</p>
+                  );
+                })}
+              </Box>
+              <Box className="total_price_box black_solid">
+                <Box className="boxTotal">
+                  <p>mahsulot narxi</p>
+                  <p>$21</p>
+                  <img src="/icons/plus.svg" style={{ marginLeft: "20px" }} />
+                  <p>Yetkazish hizmati</p>
+                  <p>$2</p>
+                  <img src="/icons/pause.svg" style={{ marginLeft: "20px" }} />
+                  <p>jami narxi</p>
+                  <p>$23</p>
+                </Box>
                 <Button
-                  style={{
-                    background: "#1976d2",
-                    color: "#ffffff",
-                    cursor: "pointer",
-                    borderRadius: "10px",
-                    backgroundColor: "red",
-                  }}
+                  variant="contained"
+                  color={"secondary"}
+                  style={{ borderRadius: "10px" }}
                 >
-                  bekor qilish
+                  BEKOR QILISH
                 </Button>
                 <Button
-                  style={{
-                    background: "#1976d2",
-                    color: "#ffffff",
-                    cursor: "pointer",
+                  variant="contained"
+                  sx={{
+                    background: "rgb(2, 136, 209)",
+                    color: "rgb(255, 255, 255)",
                     borderRadius: "10px",
-                    marginRight: "7px",
                   }}
                 >
-                  to'lash
+                  TO'LASH
                 </Button>
               </Box>
             </Box>
-          </Box>
-        );
-      })}
-    </Stack>
+          );
+        })}
+      </Stack>
+    </TabPanel>
   );
 }
