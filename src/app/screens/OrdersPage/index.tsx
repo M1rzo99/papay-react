@@ -1,45 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { Box, Container, Input, Stack } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Container, Stack } from "@mui/material";
 import "../../../css/orders.css";
-import ProcessOrders from "../../components/orders/processOrders";
-import PauseOrders from "../../components/orders/pausedOrders";
-import FinishedOreders from "../../components/orders/finishedOrders";
-import TabList from "@mui/lab/TabList";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Tab from "@mui/material/Tab";
-import TabPanel from "@mui/lab/TabPanel";
-import { TabContext } from "@mui/lab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import FinishedOrders from "../../components/orders/finishedOrders";
+import ProcessOrders from "../../components/orders/processOrders";
+import PausedOrders from "../../components/orders/pausedOrders";
 import Marginer from "../../components/marginer";
-
+import { Order } from "../../../types/order";
+// REDUX
 import { useDispatch } from "react-redux";
-import { createSelector } from "reselect";
 import { Dispatch } from "@reduxjs/toolkit";
 import {
   setPauseorders,
   setProcessOrders,
   setFinishedorders,
 } from "../../screens/OrdersPage/slice";
-import { Order } from "../../../types/order";
 
-//REDUX SLICE
+// REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
-  setPauseorders: (data: Order[]) => dispatch(setPauseorders(data)),
-
-  setProcessOrders: (data: Order) => dispatch(setProcessOrders(data)),
-
-  setFinishedorders: (data: Order[]) => dispatch(setFinishedorders(data)),
+  setPausedOrders: (data: Order[]) => dispatch(setPauseorders(data)),
+  setProcessOrders: (data: Order[]) => dispatch(setProcessOrders(data)),
+  setFinishedOrders: (data: Order[]) => dispatch(setFinishedorders(data)),
 });
+
 export function OrdersPage() {
-  /* INITIALIZATION */
-  const { setPauseorders, setProcessOrders, setFinishedorders } =
+  /** INITIALIZATIONS **/
+  const { setPausedOrders, setProcessOrders, setFinishedOrders } =
     actionDispatch(useDispatch());
   const [value, setValue] = useState("1");
 
   useEffect(() => {}, []);
 
-  /*    HANDLERS   */
+  /** HANDLERS *****/
   const handleChange = (event: any, newValue: string) => {
     setValue(newValue);
   };
+
   return (
     <div className="order_page">
       <Container
@@ -47,123 +46,115 @@ export function OrdersPage() {
         style={{ display: "flex", flexDirection: "row" }}
         sx={{ mt: "50px", mb: "50px" }}
       >
-        <Stack className={"order_left"}>
+        <Stack className="order_left">
           <TabContext value={value}>
-            <Box className={"order_nav_frame"}>
+            <Box className="order_nav_frame">
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <TabList
                   onChange={handleChange}
-                  aria-label={"basic tabs example"}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    marginBottom: "30px",
-                  }}
+                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <Tab label="Buyurtmalarim" value="1" />
-                  <Tab
-                    sx={{ ml: "150px", mr: "150px" }}
-                    label="Jarayon"
-                    value="2"
-                  />
-                  <Tab label="Yakunlangan" value="3" />
+                  <Tab label="Buyurtmalarim" value={"1"}></Tab>
+                  <Tab label="Jarayon" value={"2"}></Tab>
+                  <Tab label="Yakunlangan" value={"3"}></Tab>
                 </TabList>
-
-                <Marginer
-                  direction="horizontal"
-                  height="1"
-                  width="100%"
-                  bg="#ffffff"
-                />
               </Box>
             </Box>
-
-            <Stack className={"order_main_content"}>
-              <TabPanel value="1">
-                <PauseOrders />
-              </TabPanel>
-              <TabPanel value="2">
-                <ProcessOrders />
-              </TabPanel>
-              <TabPanel value="3">
-                <FinishedOreders />
-              </TabPanel>
+            <Stack className="order_main_content">
+              <PausedOrders />
+              <ProcessOrders />
+              <FinishedOrders />
             </Stack>
           </TabContext>
         </Stack>
 
-        <Stack className={"order_right"}>
-          <Box className={"order_info_box"}>
+        <Stack className="order_right">
+          <Box className="order_info_box">
             <Box
-              display={"flex"}
+              display="flex"
+              marginBottom={"40px"}
               flexDirection={"column"}
+              justifyContent={"center"}
               alignItems={"center"}
             >
-              <div className={"order_use_img"}>
+              <Box className="order_user_img">
                 <img
-                  src={"/auth/df_user.jpeg"}
-                  className={"order_user_avatar"}
+                  src="/auth/default_user.svg"
+                  className="order_user_avatar"
                 />
-                <Box className={"order_user_icon"}>
+                <Box className="order_user_icon_box">
                   <img
-                    src={"/icons/def_usr.svg"}
-                    width={"20px"}
-                    height={"20px"}
+                    src="/icons/def_usr.svg"
+                    className="order_user_prof_img"
                   />
                 </Box>
-              </div>
-              <strong>Mirzo Shomuratov</strong>
-              <p>Foydalanuvchi</p>
-              <Box className={"Marginer"}></Box>
-              <Box sx={{ display: "flex", marginRight: "80%" }}>
-                <img src={"/icons/location.svg"} />
-                <p>Seoul</p>
+              </Box>
+              <span className="order_user_name">Mirzo Shomuratov</span>
+              <span className="order_user_prof">Foydalanuvchi</span>
+            </Box>
+
+            <Box className="order_user_address" marginTop={"8px"}>
+              <Marginer
+                direction="horizontal"
+                width="100%"
+                height="1"
+                bg="rgb(161, 161, 161)"
+              />
+
+              <Box style={{ marginTop: "10px", display: "flex" }}>
+                <LocationOnIcon />
+                <div className="spec_address_txt">
+                  Urgench, Bekobod Al-Xorazmiy 4-1
+                </div>
               </Box>
             </Box>
           </Box>
-
-          <Box marginTop={"13px"} className={"order_info_box"}>
+          <form className="order_info_box" style={{ marginTop: "15px" }}>
+            <input
+              type="text"
+              name="card_number"
+              className="card_input"
+              placeholder="Card number :1234 2134 0459 4576"
+            />
             <Box
-              display={"flex"}
-              flexDirection={"column"}
-              alignItems={"center"}
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
             >
               <input
-                className={"for_order_inputs"}
                 type="text"
-                placeholder="Card Number: 5423 2325 4847 0011"
+                name="card_period"
+                className="card_half_input"
+                placeholder="01 / 31"
               />
-              <Box height={"auto"} display={"flex"} gap={"8px"}>
-                <input
-                  className={"orders_inputs"}
-                  type="data"
-                  placeholder="07/24"
-                />
-                <input
-                  className={"orders_inputs"}
-                  type="text"
-                  placeholder="CVV: 010"
-                />
-              </Box>
               <input
-                className={"for_order_inputs"}
                 type="text"
-                placeholder="Mirzo Shomuratov"
+                name="card_cvv"
+                placeholder="CVV : 121"
+                className="card_half_input"
               />
-              <Box
-                display={"flex"}
-                justifyContent={"space-between"}
-                gap={"15px"}
-                mt={"35px"}
-                mb={"16px"}
-              >
-                <img className="cart_img" src={"/others/union.png"} />
-                <img className="cart_img" src={"/others/paypal.png"} />
-                <img className="cart_img" src={"/others/visa.png"} />
-                <img className="cart_img" src={"/others/master.png"} />
-              </Box>
             </Box>
-          </Box>
+            <input
+              type="text"
+              name="card_creator"
+              placeholder="Mirzo"
+              className="card_input"
+            />
+            <Box
+              display={"flex"}
+              justifyContent={"space-between"}
+              gap={"15px"}
+              mt={"35px"}
+              mb={"16px"}
+            >
+              <img className="cart_img" src={"/others/union.png"} />
+              <img className="cart_img" src={"/others/paypal.png"} />
+              <img className="cart_img" src={"/others/visa.png"} />
+              <img className="cart_img" src={"/others/master.png"} />
+            </Box>
+          </form>
         </Stack>
       </Container>
     </div>

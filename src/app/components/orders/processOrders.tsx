@@ -31,7 +31,7 @@ export default function ProcessOrders(props: any) {
             <Box className="order_main_box">
               <Box className="order_box_scroll">
                 {order.map((item) => {
-                  const image_path = "/others/sandvich.jpeg";
+                  const image_path = "/others/others_header.png";
                   return (
                     <Box className="ordersName_price">
                       <img src={image_path} className={"orderDishImg"} />
