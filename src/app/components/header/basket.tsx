@@ -35,14 +35,15 @@ export function Basket(props: any) {
     setAnchorEl(null);
   };
 
+  //
   const processOrderHandler = async () => {
     try {
       assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
       const order = new OrderApiService();
       await order.createOrder(cartItems);
 
-      onDeleteAll();
-      handleClose();
+      onDeleteAll(); // cart ni ichidagi hammsini ochirish
+      handleClose(); // buyurtma qilish jarayoniga otilganda pageni yopib yuborishi uchun ishlatamiz
 
       history.push("/orders");
     } catch (err: any) {
