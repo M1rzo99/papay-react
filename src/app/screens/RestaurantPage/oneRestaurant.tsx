@@ -111,7 +111,15 @@ export function OneRestaurant(props: any) {
       .getTargetProducts(targetProductSearchObj)
       .then((data) => setTargetProducts(data))
       .catch((err) => console.log(err));
-  }, [chosenRestaurantId, targetProductSearchObj, productRebuild]);
+  }, [chosenRestaurantId, productRebuild]);
+
+  useEffect(() => {
+    const productService = new ProductApiService();
+    productService
+      .getTargetProducts(targetProductSearchObj)
+      .then((data) => setTargetProducts(data))
+      .catch((err) => console.log(err));
+  }, [, targetProductSearchObj]);
 
   /** HANDLERS */
   const chosenRestaurantHandler = (id: string) => {
