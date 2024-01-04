@@ -46,7 +46,7 @@ export function Basket(props: any) {
       handleClose(); // "buyurtma qilish" jarayoniga o'tilganda pageni yopib yuborishi uchun ishlatamiz
       props.setOrderRebuild(new Date());
 
-      history.push("/orders");
+      history.push("/orders"); // Bu boshqa pagega click qilganimizda boshqa pagega o't deganimizdir url bn birgalikda
     } catch (err: any) {
       console.log(err);
       sweetErrorHandling(err).then();
