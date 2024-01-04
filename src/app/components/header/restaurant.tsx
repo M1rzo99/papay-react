@@ -72,6 +72,7 @@ export function NavbarRestaurant(props: any) {
               onRemove={props.onRemove}
               onDelete={props.onDelete}
               onDeleteAll={props.onDeleteAll}
+              setOrderRebuild={props.setOrderRebuild}
             />
 
             {!props.verifiedMemberData ? (
@@ -92,6 +93,7 @@ export function NavbarRestaurant(props: any) {
                 onClick={props.handleLogOutClick}
               />
             )}
+
             <Menu
               anchorEl={props.anchorEl}
               open={props.open}

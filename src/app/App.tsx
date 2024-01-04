@@ -38,6 +38,7 @@ function App() {
   const main_path = window.location.pathname;
   const [signupOpen, setSignupOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [orderRebuild, setOrderRebuild] = useState<Date>(new Date()); // o'zgaruvchan  hozirgi vaqt qiymatini beradi
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -84,10 +85,12 @@ function App() {
     }
   };
 
+  // for plus +1
   const onAdd = (product: Product) => {
     const exist: any = cartItems.find(
       (item: CartItem) => item._id === product._id
     );
+
     if (exist) {
       const cart_updated = cartItems.map((item: CartItem) =>
         item._id === product._id
@@ -109,6 +112,8 @@ function App() {
       localStorage.setItem("cart_data", JSON.stringify(cart_updated));
     }
   };
+
+  // for minus -1
   const onRemove = (item: CartItem) => {
     const item_data: any = cartItems.find(
       (ele: CartItem) => ele._id === item._id
@@ -129,6 +134,8 @@ function App() {
       localStorage.setItem("cart_data", JSON.stringify(cart_updated));
     }
   };
+
+  // for delete one Product
   const onDelete = (item: CartItem) => {
     const cart_updated = cartItems.filter(
       (ele: CartItem) => ele._id !== item._id
@@ -136,6 +143,8 @@ function App() {
     setCartItems(cart_updated);
     localStorage.setItem("cart_data", JSON.stringify(cart_updated));
   };
+
+  // for all Product Delete
   const onDeleteAll = () => {
     setCartItems([]);
     localStorage.removeItem("cart_data");
@@ -159,6 +168,7 @@ function App() {
           onRemove={onRemove}
           onDelete={onDelete}
           onDeleteAll={onDeleteAll}
+          setOrderRebuild={setOrderRebuild}
         />
       ) : main_path.includes("/restaurant") ? (
         <NavbarRestaurant
@@ -176,6 +186,7 @@ function App() {
           onRemove={onRemove}
           onDelete={onDelete}
           onDeleteAll={onDeleteAll}
+          setOrderRebuild={setOrderRebuild}
         />
       ) : (
         <NavbarOthers
@@ -193,6 +204,7 @@ function App() {
           onRemove={onRemove}
           onDelete={onDelete}
           onDeleteAll={onDeleteAll}
+          setOrderRebuild={setOrderRebuild}
         />
       )}
 
@@ -204,7 +216,10 @@ function App() {
           <CommunityPage />
         </Route>
         <Route path="/orders">
-          <OrdersPage />
+          <OrdersPage
+            orderRebuild={orderRebuild}
+            setOrderRebuild={setOrderRebuild}
+          />
         </Route>
         <Route path="/member-page">
           <MemberPage />

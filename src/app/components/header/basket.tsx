@@ -43,7 +43,8 @@ export function Basket(props: any) {
       await order.createOrder(cartItems);
 
       onDeleteAll(); // cart ni ichidagi hammsini ochirish
-      handleClose(); // buyurtma qilish jarayoniga otilganda pageni yopib yuborishi uchun ishlatamiz
+      handleClose(); // "buyurtma qilish" jarayoniga o'tilganda pageni yopib yuborishi uchun ishlatamiz
+      props.setOrderRebuild(new Date());
 
       history.push("/orders");
     } catch (err: any) {
