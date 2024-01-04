@@ -96,7 +96,7 @@ export function OrdersPage(props: any) {
             >
               <Box className="order_user_img">
                 <img
-                  src="/auth/default_user.svg"
+                  src={verifiedMemberData?.mb_image}
                   className="order_user_avatar"
                 />
                 <Box className="order_user_icon_box">
@@ -106,8 +106,12 @@ export function OrdersPage(props: any) {
                   />
                 </Box>
               </Box>
-              <span className="order_user_name">Mirzo Shomuratov</span>
-              <span className="order_user_prof">Foydalanuvchi</span>
+              <span className="order_user_name">
+                {verifiedMemberData?.mb_nick}
+              </span>
+              <span className="order_user_prof">
+                {verifiedMemberData?.mb_type ?? "Foydalanuvchi"}
+              </span>
             </Box>
 
             <Box className="order_user_address" marginTop={"8px"}>
@@ -121,7 +125,8 @@ export function OrdersPage(props: any) {
               <Box style={{ marginTop: "10px", display: "flex" }}>
                 <LocationOnIcon />
                 <div className="spec_address_txt">
-                  Urgench, Bekobod Al-Xorazmiy 4-1
+                  {verifiedMemberData?.mb_address ??
+                    " Urgench, Bekobod Al-Xorazmiy 4-1"}
                 </div>
               </Box>
             </Box>
