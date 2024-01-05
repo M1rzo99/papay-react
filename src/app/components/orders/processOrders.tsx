@@ -48,11 +48,7 @@ export default function ProcessOrders(props: any) {
       sweetErrorHandling(err).then();
     }
   };
-  console.log(
-    "Order::",
-    processOrders[0].order_total_amount -
-      processOrders[0].order_delivery_cost * 1
-  );
+
   return (
     <TabPanel value={"2"}>
       <Stack>

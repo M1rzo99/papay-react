@@ -35,7 +35,6 @@ export function Basket(props: any) {
     setAnchorEl(null);
   };
 
-  //
   const processOrderHandler = async () => {
     try {
       assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
