@@ -1,16 +1,20 @@
-import { Favorite } from "@mui/icons-material";
+import { ArticleTwoTone, Favorite } from "@mui/icons-material";
 import { Stack, Link, Box } from "@mui/material";
 import { AnyAction } from "@reduxjs/toolkit";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Checkbox from "@mui/material/Checkbox";
 import moment from "moment";
+import { BoArticle } from "../../../types/boArticles";
+import { serverApi } from "../../../lib/config";
 
 export function TargetArticles(props: any) {
   return (
     <Stack>
-      {props.targetBoArticles?.map((article: any, index: string) => {
-        const art_image_url = "/auth/df_user.jpeg";
+      {props.targetBoArticles?.map((article: BoArticle) => {
+        const art_image_url = article?.art_image
+          ? `${serverApi}/${article.art_image}`
+          : "/auth/df_user.jpeg";
         return (
           <Link
             className={"all_article_box"}
@@ -36,12 +40,14 @@ export function TargetArticles(props: any) {
                       marginTop: "10px",
                     }}
                   />
-                  <span className={"all_article_author_user"}>@martin</span>
+                  <span className={"all_article_author_user"}>
+                    {article?.member_data.mb_nick}
+                  </span>
                 </Box>
-                <Box display={"flex"} sx={{ alignItems: "flex-end" }}>
-                  <p className={"all_article_txt"}>
-                    Texas De Brazil Zo'r Restaurant
-                  </p>
+                <Box display={"flex"} sx={{ alignItems: "center" }}>
+                  <span className={"all_article_ttle"}>{article?.bo_id}</span>
+
+                  <p className={"all_article_txt"}>{article?.art_subject}</p>
                 </Box>
               </Box>
 
@@ -51,7 +57,9 @@ export function TargetArticles(props: any) {
                 display={"flex"}
                 marginTop={"120px"}
               >
-                <p className={"all_article_info_txt"}>22-05-15 0208</p>
+                <p className={"all_article_info_txt"}>
+                  {moment().format("YY-MM-DD hh:mm")}
+                </p>
                 <div className={"evolution_box"} style={{ display: "flex" }}>
                   <div
                     style={{
@@ -63,17 +71,17 @@ export function TargetArticles(props: any) {
                     <Checkbox
                       icon={<FavoriteBorder />}
                       checkedIcon={<Favorite style={{ color: "#fff" }} />}
-                      checked={true}
+                      id={article._id}
+                      checked={false}
                     />
                     <span style={{ color: "white", fontWeight: "600" }}>
-                      {" "}
-                      3{" "}
+                      {article?.art_likes}
                     </span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <RemoveRedEyeIcon sx={{ mr: "10px", color: "#fff" }} />
                     <span style={{ color: "white", fontWeight: "600" }}>
-                      1{" "}
+                      {article?.art_views}
                     </span>
                   </div>
                 </div>

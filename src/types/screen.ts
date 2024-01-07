@@ -1,6 +1,6 @@
 import { Restaurant } from "./user";
 import { Product } from "./product";
-import { boArticle } from "./boArticles";
+import { BoArticle } from "./boArticles";
 import { Order } from "./order";
 
 // REACT APP STATE
@@ -15,9 +15,9 @@ export interface HomePageState {
   topRestaurants: Restaurant[];
   bestRestaurants: Restaurant[];
   trendProducts: Product[];
-  bestBoArticles: boArticle[];
-  trendBoArticles: boArticle[];
-  newsBoArticles: boArticle[];
+  bestBoArticles: BoArticle[];
+  trendBoArticles: BoArticle[];
+  newsBoArticles: BoArticle[];
 }
 
 // RESTAURANY PAGE
@@ -39,5 +39,5 @@ export interface OrdersPageState {
 
 // COmmunity page
 export interface CommunityPageState {
-  targetBoArticles: boArticle[];
+  targetBoArticles: BoArticle[];
 }

@@ -218,6 +218,16 @@
   align-items: center;
   margin-left: 10px;
 }
+.all_article_box .all_article_ttle {
+  flex-shrink: 0;
+  color: whitesmoke;
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
 
 .all_article_info_txt {
   width: 124px;

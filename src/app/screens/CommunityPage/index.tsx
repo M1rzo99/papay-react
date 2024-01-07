@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Container, Stack } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
@@ -14,20 +14,77 @@ import {
   ArrowForward,
   ArrowForwardIos,
 } from "@mui/icons-material";
-import Marginer from "../../components/marginer";
 
-const targetBoArticles = [1, 2, 3, 4, 5];
+import { BoArticle, SearchArticlesObj } from "../../../types/boArticles";
+import CommunityApiService from "../../apiServices/communityApiService";
+
+// REDUX
+import { useDispatch, useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { Dispatch } from "@reduxjs/toolkit";
+import { setTargetBoArticles } from "./slice";
+import { retrivetargetBoArticles } from "./selector";
+
+// REDUX SLICE
+const actionDispatch = (dispatch: Dispatch) => ({
+  setTargetBoArticles: (data: BoArticle[]) =>
+    dispatch(setTargetBoArticles(data)),
+});
+
+// REDUX SELECTOR
+const targetBoArticlesRetriever = createSelector(
+  retrivetargetBoArticles,
+  (targetBoArticles) => ({
+    targetBoArticles,
+  })
+);
 
 export function CommunityPage(props: any) {
   /* INITIALIZATION */
+  const { setTargetBoArticles } = actionDispatch(useDispatch());
+  const { targetBoArticles } = useSelector(targetBoArticlesRetriever);
+
   const [value, setValue] = React.useState("1");
+  const [searchArticlesObj, setSearchArticlesObj] = useState<SearchArticlesObj>(
+    {
+      bo_id: "all",
+      page: 1,
+      limit: 5,
+    }
+  );
+
+  useEffect(() => {
+    const communityService = new CommunityApiService();
+    communityService
+      .getTargetArticles(searchArticlesObj)
+      .then((data) => setTargetBoArticles(data))
+      .catch((err) => console.log(err));
+  }, [searchArticlesObj]);
 
   /* HANDLERS */
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    searchArticlesObj.page = 1;
+    switch (newValue) {
+      case "1":
+        searchArticlesObj.bo_id = "all";
+        break;
+      case "2":
+        searchArticlesObj.bo_id = "celebrity";
+        break;
+      case "3":
+        searchArticlesObj.bo_id = "evaluation";
+        break;
+      case "4":
+        searchArticlesObj.bo_id = "story";
+        break;
+    }
+    setSearchArticlesObj({ ...searchArticlesObj });
+
     setValue(newValue);
   };
   const handlePaginationChange = (event: any, value: number) => {
-    console.log(value);
+    searchArticlesObj.page = value;
+    setSearchArticlesObj({ ...searchArticlesObj });
   };
 
   return (
@@ -62,18 +119,16 @@ export function CommunityPage(props: any) {
                 </Box>
                 <Box className={"article_main"}>
                   <TabPanel value={"1"}>
-                    <TargetArticles targetBoArticles={[1]} />
+                    <TargetArticles targetBoArticles={targetBoArticles} />
                   </TabPanel>
                   <TabPanel value={"2"}>
-                    <TargetArticles targetBoArticles={[1, 2]} />
+                    <TargetArticles targetBoArticles={targetBoArticles} />
                   </TabPanel>
                   <TabPanel value={"3"}>
-                    <TargetArticles targetBoArticles={[1, 2, 3]} />
+                    <TargetArticles targetBoArticles={targetBoArticles} />
                   </TabPanel>
                   <TabPanel value={"4"}>
-                    <TargetArticles
-                      targetBoArticles={[1, 2, 3, 4, 5, 6, 7, 8]}
-                    />
+                    <TargetArticles targetBoArticles={targetBoArticles} />
                   </TabPanel>
                 </Box>
                 <Box className={"article_bott"}>
