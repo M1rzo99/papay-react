@@ -25,9 +25,70 @@ import { MySettings } from "./mySettings";
 import { TuiEditor } from "../../components/TuiEditor/TuiEditor";
 import TuiViwer from "../../components/TuiEditor/TuiViwer";
 
+// REDUX
+import { useDispatch, useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { Dispatch } from "@reduxjs/toolkit";
+import {
+  setChosenMember,
+  setChosenMemberBoArticles,
+  setChosenSingleBoArticle,
+} from "./slice";
+import {
+  retriveChosenMember,
+  retriveChosenMemberBoArticles,
+  retriveChosenSingleBoArticle,
+} from "./selector";
+import { BoArticle } from "../../../types/boArticles";
+import { Member } from "../../../types/user";
+import { retrivetargetBoArticles } from "../CommunityPage/selector";
+
+// REDUX SLICE
+const actionDispatch = (dispatch: Dispatch) => ({
+  setChosenMember: (data: Member) => dispatch(setChosenMember(data)),
+  setChosenMemberBoArticles: (data: BoArticle[]) =>
+    dispatch(setChosenMemberBoArticles(data)),
+  setChosenSingleBoArticle: (data: BoArticle) =>
+    dispatch(setChosenSingleBoArticle(data)),
+});
+
+// REDUX SELECTOR
+const chosenMemberRetriver = createSelector(
+  retriveChosenMember,
+  (chosenMember) => ({
+    chosenMember,
+  })
+);
+
+const ChosenMemberBoArticlesRetriver = createSelector(
+  retriveChosenMemberBoArticles,
+  (chosenMemberBoArticles) => ({
+    chosenMemberBoArticles,
+  })
+);
+
+const chosenSingleBoArticleRetriver = createSelector(
+  retriveChosenSingleBoArticle,
+  (chosenSingleBoArticle) => ({
+    chosenSingleBoArticle,
+  })
+);
+
 export function VisitMyPage(props: any) {
   // Initialize//
+  const {
+    setChosenMember,
+    setChosenMemberBoArticles,
+    setChosenSingleBoArticle,
+  } = actionDispatch(useDispatch());
+
+  const { chosenMember } = useSelector(chosenMemberRetriver);
+  const { chosenMemberBoArticles } = useSelector(
+    ChosenMemberBoArticlesRetriver
+  );
+  const { chosenSingleBoArticle } = useSelector(chosenSingleBoArticleRetriver);
   const [value, setValue] = React.useState("1");
+
   // Handlers//
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
