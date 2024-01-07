@@ -145,13 +145,12 @@ export function OneRestaurant(props: any) {
 
   const targetLikeProduct = async (e: any) => {
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
-
       const memberService = new MemberApiService(),
         like_result: any = await memberService.memberLikeTarget({
           like_ref_id: e.target.id,
           group_type: "product",
         });
+      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
       assert.ok(like_result, Definer.general_err1);
 
       await sweetTopSmallSuccessAlert("success", 700, false);

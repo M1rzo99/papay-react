@@ -225,8 +225,6 @@
   font-style: normal;
   line-height: normal;
   margin-left: 10px;
-  display: flex;
-  flex-direction: column;
 }
 
 .all_article_info_txt {
