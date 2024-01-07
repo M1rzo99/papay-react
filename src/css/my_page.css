@@ -94,12 +94,12 @@
 }
 
 .my_page .all_article_box .all_article_container {
-  margin-left: 15px;
+  margin-left: 25px;
   width: 75%;
   height: 90%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 }
 
 .my_page .all_article_author_user {
