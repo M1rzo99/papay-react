@@ -23,3 +23,9 @@ export interface SearchArticlesObj {
   bo_id: string;
   order?: number | null;
 }
+
+export interface SerchMemberArticlesObj {
+  page: number;
+  limit: number;
+  mb_id: string;
+}

@@ -17,7 +17,6 @@ export function MemberPage(props: any) {
 
   const chosen_mb_id: string | null = query.get("mb_id") ?? null;
   const chosen_art_id: string | null = query.get("art_id") ?? null;
-
   console.log("queryTest::", query.get("mb_id"));
 
   return (

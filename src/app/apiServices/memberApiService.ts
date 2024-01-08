@@ -79,6 +79,25 @@ class MemberApiService {
       throw err;
     }
   }
+
+  // 2024/01/08 start
+  public async getChosenMember(id: string) {
+    try {
+      const url = `/member/${id}`,
+        result = await axios.get(this.path + url, {
+          withCredentials: true,
+        });
+      assert.ok(result?.data, Definer.general_err1);
+      assert.ok(result?.data?.state != "fail", result?.data?.message);
+      console.log("state:::", result.data.data);
+
+      const member: Member = result.data.data;
+      return member;
+    } catch (err: any) {
+      console.log(`ERROR::: getChosenMember ${err.message}`);
+      throw err;
+    }
+  }
 }
 
 export default MemberApiService;
