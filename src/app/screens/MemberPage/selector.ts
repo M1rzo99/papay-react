@@ -1,27 +1,27 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { AppRootState } from "../../../types/screen";
-import { MemberPage } from ".";
 
-const selectMemberpage = (state: AppRootState) => state.memberPage;
+const selectMemberPage = (state: AppRootState) => state.memberPage;
 
 export const retriveChosenMember = createSelector(
-  selectMemberpage,
+  selectMemberPage,
   (MemberPage) => MemberPage.chosenMember
 );
 
 export const retriveChosenMemberBoArticles = createSelector(
-  selectMemberpage,
+  selectMemberPage,
   (MemberPage) => MemberPage.chosenMemberBoArticles
 );
 export const retriveChosenSingleBoArticle = createSelector(
-  selectMemberpage,
+  selectMemberPage,
   (MemberPage) => MemberPage.chosenSingleBoArticle
 );
 export const retriveMemberFollowers = createSelector(
-  selectMemberpage,
+  selectMemberPage,
   (MemberPage) => MemberPage.memberFollowers
 );
 export const retriveMemberFollowings = createSelector(
-  selectMemberpage,
+  selectMemberPage,
   (MemberPage) => MemberPage.memberFollowings
 );
+// memberPage redux architekturasi un

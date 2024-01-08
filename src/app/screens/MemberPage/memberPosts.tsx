@@ -48,7 +48,11 @@ export function MemberPosts(props: any) {
           ? `${serverApi}/${article.art_image}`
           : "/auth/df_lucas.jpeg";
         return (
-          <Stack className="all_article_box" sx={{ cursor: "pointer" }}>
+          <Stack
+            className="all_article_box"
+            sx={{ cursor: "pointer" }}
+            onClick={() => renderChosenArticleHandler(article?._id)} // shu mantiq orqali pagenni ichidagi tableni xphlagan joyiga bossak o'sha page olib o'tadi
+          >
             <Box
               className="all_article_img"
               sx={{ backgroundImage: `url(${image_path})` }}
