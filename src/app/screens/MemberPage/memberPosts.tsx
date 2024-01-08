@@ -51,7 +51,8 @@ export function MemberPosts(props: any) {
           <Stack
             className="all_article_box"
             sx={{ cursor: "pointer" }}
-            onClick={() => renderChosenArticleHandler(article?._id)} // shu mantiq orqali pagenni ichidagi tableni xphlagan joyiga bossak o'sha page olib o'tadi
+            onClick={() => renderChosenArticleHandler(article?._id)}
+            // shu mantiq orqali pagenni ichidagi tableni xphlagan joyiga bossak o'sha page olib o'tadi
           >
             <Box
               className="all_article_img"
