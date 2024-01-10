@@ -58,7 +58,6 @@ export function MemberFollowers(props: any) {
   }, [followersSerchObj, followRebuild]); // componentDidUpdate mantig'i
 
   //  Handler //
-
   const subscribeHandler = async (e: any, id: string) => {
     try {
       e.stopPropagation(); // stopPropogation  bitaa tabelni bosganda ichiga click bolmasligi un
