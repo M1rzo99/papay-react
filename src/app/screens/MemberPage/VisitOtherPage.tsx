@@ -100,7 +100,7 @@ export function VisitOtherPage(props: any) {
     useState<SerchMemberArticlesObj>({
       mb_id: chosen_mb_id,
       page: 1,
-      limit: 5,
+      limit: 4,
     });
   const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
   const [followRebuild, setFollowRebuild] = useState<boolean>(false); // follow pageidagilarni refresh bosganda qayta qurib beradi

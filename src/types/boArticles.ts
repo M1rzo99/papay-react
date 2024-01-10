@@ -1,6 +1,13 @@
 import { Member } from "./user";
 import { MeLiked } from "./product";
 
+export interface BoArticlesInput {
+  art_subject: string;
+  art_content: string;
+  art_image: string;
+  bo_id: string;
+}
+
 export interface BoArticle {
   _id: string;
   art_subject: string;

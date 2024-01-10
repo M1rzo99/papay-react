@@ -98,7 +98,7 @@ export function VisitMyPage(props: any) {
   const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
   const [followRebuild, setFollowRebuild] = useState<boolean>(false); // follow pageidagilarni refresh bosganda qayta qurib beradi
   const [memberArticleSerchObj, setMemberArticleSerchObj] =
-    useState<SerchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 5 });
+    useState<SerchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 4 });
 
   useEffect(() => {
     if (!localStorage.getItem("member_data")) {
@@ -220,7 +220,10 @@ export function VisitMyPage(props: any) {
                 <TabPanel value={"4"}>
                   <Box className="menu_name">Maqola Yozish</Box>
                   <Box className="write_content">
-                    <TuiEditor />
+                    <TuiEditor
+                      setValue={setValue}
+                      setArticlesRebuild={setArticlesRebuild}
+                    />
                   </Box>
                 </TabPanel>
 

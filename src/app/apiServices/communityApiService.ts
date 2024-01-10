@@ -6,6 +6,7 @@ import {
   SearchArticlesObj,
   BoArticle,
   SerchMemberArticlesObj,
+  BoArticlesInput,
 } from "../../types/boArticles";
 
 class CommunityApiService {
@@ -15,9 +16,23 @@ class CommunityApiService {
     this.path = serverApi;
   }
 
-  public async getTargetArticles(
-    data: SearchArticlesObj
-  ): Promise<BoArticle[]> {
+  public async createArticle(data: BoArticlesInput) {
+    try {
+      const result = await axios.post(this.path + "/community/create", data, {
+        withCredentials: true,
+      });
+
+      assert.ok(result?.data, Definer.general_err1);
+      assert.ok(result?.data?.state != "fail", result?.data?.message);
+      const article: BoArticle = result.data.data;
+      return article;
+    } catch (err: any) {
+      console.log(`ERROR::: createArticle ${err.message}`);
+      throw err;
+    }
+  }
+
+  public async getTargetArticles(data: SearchArticlesObj) {
     try {
       let url = `/community/target?bo_id=${data.bo_id}&page=${data.page}&limit=${data.limit}`;
       if (data.order) url += `&order=${data.order}`;
@@ -63,6 +78,29 @@ class CommunityApiService {
       return article;
     } catch (err: any) {
       console.log(`ERROR::: getChosenArticle ${err.message}`);
+      throw err;
+    }
+  }
+
+  public async uploadImageToServer(image: any) {
+    try {
+      let formData = new FormData();
+      formData.append("community_image", image);
+      console.log(image);
+      const result = await axios(`${this.path}/community/image`, {
+        method: "POST",
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      assert.ok(result?.data, Definer.general_err1);
+      assert.ok(result?.data?.state != "fail", result?.data?.message);
+      const image_name: string = result.data.data;
+      return image_name;
+    } catch (err: any) {
+      console.log(`ERROR::: uploadImageToServer ${err.message}`);
       throw err;
     }
   }

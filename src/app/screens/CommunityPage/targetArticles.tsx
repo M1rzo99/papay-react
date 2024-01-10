@@ -75,7 +75,7 @@ export function TargetArticles(props: any) {
                 <Box display={"flex"} sx={{ alignItems: "center" }}>
                   <span className={"all_article_ttle"}>{article?.bo_id} -</span>
 
-                  <p className={"all_article_txt"}>{article?.art_content}</p>
+                  <p className={"all_article_txt"}> {article?.art_content} </p>
                 </Box>
               </Box>
 
