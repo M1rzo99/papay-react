@@ -105,6 +105,7 @@ export function VisitOtherPage(props: any) {
   const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
   const [followRebuild, setFollowRebuild] = useState<boolean>(false); // follow pageidagilarni refresh bosganda qayta qurib beradi
 
+  // shu  boshqa userlarni pageda buyrakga bosam qayta burakni pagega otkazib yuboradigon mantiq
   useEffect(() => {
     if (chosen_mb_id === verifiedMemberData?._id) {
       history.push("/member-page");
@@ -362,8 +363,11 @@ export function VisitOtherPage(props: any) {
 
               <Box className="my_page_menu">
                 <TabList
+                  orientation="vertical"
+                  variant="scrollable"
                   onChange={handleChange}
                   aria-label="tabs API tabs example"
+                  sx={{ borderRight: 1, borderColor: "divider", width: "95%" }}
                 >
                   <Tab
                     value={"1"}
@@ -386,7 +390,7 @@ export function VisitOtherPage(props: any) {
                         className={`menu_box ${value}`}
                         onClick={() => setValue("2")}
                       >
-                        <img src="/icons/followers.svg" />
+                        <img src="/icons/follower.svg" />
                         <span>Followers</span>
                       </div>
                     )}

@@ -64,7 +64,7 @@ export const TuiEditor = (props: any) => {
         placeholder="Type here"
         previewStyle="vertical"
         height="640px"
-        initialValue=" "
+        initialValue="Type here"
         initialEditType="WYSIWYG"
         toolbarItems={[
           ["heading", "bold", "italic", "strike"],
