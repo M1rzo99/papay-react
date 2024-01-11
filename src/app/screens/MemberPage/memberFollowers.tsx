@@ -25,6 +25,7 @@ import Definer from "../../../lib/Definer";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import ArrowForward from "@mui/icons-material/ArrowForward";
 import { useHistory } from "react-router-dom";
+import { verifyMemberData } from "../../apiServices/verify";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -63,7 +64,7 @@ export function MemberFollowers(props: any) {
   const subscribeHandler = async (e: any, id: string) => {
     try {
       e.stopPropagation(); // stopPropogation  bitaa tabelni bosganda ichiga click bolmasligi un
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifyMemberData, Definer.auth_err1);
 
       const followService = new FollowApiService();
       await followService.subscribe(id);

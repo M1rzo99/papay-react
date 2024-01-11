@@ -20,6 +20,7 @@ import {
 } from "../../screens/OrdersPage/slice";
 import OrderApiService from "../../apiServices/orderApiService";
 import { Member } from "../../../types/user";
+import { verifyMemberData } from "../../apiServices/verify";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -33,7 +34,6 @@ export function OrdersPage(props: any) {
   const { setPausedOrders, setProcessOrders, setFinishedOrders } =
     actionDispatch(useDispatch());
   const [value, setValue] = useState("1");
-  const verifiedMemberData: Member | null = props.verifiedMemberData;
 
   useEffect(() => {
     const orderService = new OrderApiService();
@@ -96,7 +96,7 @@ export function OrdersPage(props: any) {
             >
               <Box className="order_user_img">
                 <img
-                  src={verifiedMemberData?.mb_image}
+                  src={verifyMemberData?.mb_image}
                   className="order_user_avatar"
                 />
                 <Box className="order_user_icon_box">
@@ -107,10 +107,10 @@ export function OrdersPage(props: any) {
                 </Box>
               </Box>
               <span className="order_user_name">
-                {verifiedMemberData?.mb_nick}
+                {verifyMemberData?.mb_nick}
               </span>
               <span className="order_user_prof">
-                {verifiedMemberData?.mb_type ?? "Foydalanuvchi"}
+                {verifyMemberData?.mb_type ?? "Foydalanuvchi"}
               </span>
             </Box>
 
@@ -125,7 +125,7 @@ export function OrdersPage(props: any) {
               <Box style={{ marginTop: "10px", display: "flex" }}>
                 <LocationOnIcon />
                 <div className="spec_address_txt">
-                  {verifiedMemberData?.mb_address ??
+                  {verifyMemberData?.mb_address ??
                     " Urgench, Bekobod Al-Xorazmiy 4-1"}
                 </div>
               </Box>

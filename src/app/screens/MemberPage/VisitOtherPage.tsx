@@ -48,6 +48,7 @@ import {
 import assert from "assert";
 import FollowApiService from "../../apiServices/followApiService";
 import Definer from "../../../lib/Definer";
+import { verifyMemberData } from "../../apiServices/verify";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -83,7 +84,7 @@ const chosenSingleBoArticleRetriver = createSelector(
 export function VisitOtherPage(props: any) {
   /*INITIALIZATION */
   const history = useHistory();
-  const { verifiedMemberData, chosen_art_id, chosen_mb_id } = props;
+  const { chosen_art_id, chosen_mb_id } = props;
   const {
     setChosenMember,
     setChosenMemberBoArticles,
@@ -107,7 +108,7 @@ export function VisitOtherPage(props: any) {
 
   // shu  boshqa userlarni pageda buyrakga bosam qayta burakni pagega otkazib yuboradigon mantiq
   useEffect(() => {
-    if (chosen_mb_id === verifiedMemberData?._id) {
+    if (chosen_mb_id === verifyMemberData?._id) {
       history.push("/member-page");
     }
     const communityService = new CommunityApiService();
@@ -129,7 +130,7 @@ export function VisitOtherPage(props: any) {
   }, [memberArticleSerchObj, chosen_mb_id, articlesRebuild]);
 
   useEffect(() => {
-    if (chosen_mb_id === verifiedMemberData?._id) {
+    if (chosen_mb_id === verifyMemberData?._id) {
       history.push("/member-page");
     }
     const memberService = new MemberApiService();
@@ -138,7 +139,7 @@ export function VisitOtherPage(props: any) {
       .getChosenMember(memberArticleSerchObj.mb_id)
       .then((data) => setChosenMember(data))
       .catch((err) => console.log(err));
-  }, [verifiedMemberData, chosen_mb_id, followRebuild]); // bekor qilishni bosganda malumotlarni qayta olib kelishi un followRebuild ni kiritdik
+  }, [verifyMemberData, chosen_mb_id, followRebuild]); // bekor qilishni bosganda malumotlarni qayta olib kelishi un followRebuild ni kiritdik
   // ****Handlers****//
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -167,7 +168,7 @@ export function VisitOtherPage(props: any) {
 
   const subscribeHandler = async (e: any) => {
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifyMemberData, Definer.auth_err1);
 
       const followService = new FollowApiService();
       await followService.subscribe(e.target.value);
@@ -181,7 +182,7 @@ export function VisitOtherPage(props: any) {
 
   const unSubscribeHandler = async (e: any) => {
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifyMemberData, Definer.auth_err1);
 
       const followService = new FollowApiService();
       await followService.unSubscribe(e.target.value);

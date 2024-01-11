@@ -1,4 +1,5 @@
 import Cookie from "universal-cookie";
+import { serverApi } from "../../lib/config";
 
 const cookie = new Cookie();
 let member_data: any = null;
@@ -8,6 +9,11 @@ if (cookie.get("access_token")) {
     ? localStorage.getItem("member_data")
     : null;
   member_data = memberDataJson ? JSON.parse(memberDataJson) : null;
+  if (member_data) {
+    member_data.mb_image = member_data.mb_image
+      ? `${serverApi}/${member_data.mb_image}`
+      : "auth/default_user.svg";
+  }
 } else {
   localStorage.removeItem("member_data");
 }

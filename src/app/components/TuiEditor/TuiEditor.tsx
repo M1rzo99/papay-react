@@ -25,14 +25,14 @@ import { useHistory } from "react-router-dom";
 
 export const TuiEditor = (props: any) => {
   /*   INITIALIZATIONS      */
+
   const editorRef = useRef();
   const [communityArtData, setCommunityArtData] = useState<BoArticlesInput>({
     art_subject: "",
-    bo_id: "",
     art_content: "",
     art_image: "",
+    bo_id: "",
   });
-  const history = useHistory();
 
   /*     HNADLERS      */
   const uploadImage = async (image: any) => {
@@ -77,9 +77,8 @@ export const TuiEditor = (props: any) => {
       const communityService = new CommunityApiService();
       await communityService.createArticle(communityArtData);
       await sweetTopSmallSuccessAlert("Artcile is created Successfully");
-      props.setArticlesRebuild(new Date());
-
       props.setValue("1");
+
       // history.push("/member-page"); // vazifa yakunlangandan kn qaysi pageda bo'lishini taminlab beradi
     } catch (err) {
       console.log(`ERROR:::handleRegBtn", ${err}`);
@@ -149,7 +148,6 @@ export const TuiEditor = (props: any) => {
           addImageBlobHook: async (image: any, callback: any) => {
             const uploadImageUrl = await uploadImage(image);
             callback(uploadImageUrl);
-
             return false;
           },
         }}

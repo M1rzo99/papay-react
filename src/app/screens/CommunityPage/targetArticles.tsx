@@ -15,6 +15,7 @@ import {
 import assert from "assert";
 import { Definer } from "../../../lib/Definer";
 import MemberApiService from "../../apiServices/memberApiService";
+import { verifyMemberData } from "../../apiServices/verify";
 
 export function TargetArticles(props: any) {
   // Handlers
@@ -22,7 +23,7 @@ export function TargetArticles(props: any) {
 
   const targetLikeHandler = async (e: any) => {
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifyMemberData, Definer.auth_err1);
       const memberService = new MemberApiService();
       const like_result = await memberService.memberLikeTarget({
         like_ref_id: e.target.id,
@@ -75,7 +76,7 @@ export function TargetArticles(props: any) {
                 <Box display={"flex"} sx={{ alignItems: "center" }}>
                   <span className={"all_article_ttle"}>{article?.bo_id} -</span>
 
-                  <p className={"all_article_txt"}> {article?.art_content} </p>
+                  <p className={"all_article_txt"}> {article?.art_subject} </p>
                 </Box>
               </Box>
 
@@ -126,3 +127,4 @@ export function TargetArticles(props: any) {
     </Stack>
   );
 }
+export default TargetArticles;

@@ -48,6 +48,7 @@ import {
 } from "../../../lib/sweetAlert";
 import CommunityApiService from "../../apiServices/communityApiService";
 import MemberApiService from "../../apiServices/memberApiService";
+import { verifyMemberData } from "../../apiServices/verify";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -82,7 +83,7 @@ const chosenSingleBoArticleRetriver = createSelector(
 
 export function VisitMyPage(props: any) {
   // Initialization//
-  const { verifiedMemberData } = props;
+
   const {
     setChosenMember,
     setChosenMemberBoArticles,
@@ -94,14 +95,14 @@ export function VisitMyPage(props: any) {
     ChosenMemberBoArticlesRetriver
   );
   const { chosenSingleBoArticle } = useSelector(chosenSingleBoArticleRetriver);
-  const [value, setValue] = React.useState("1");
-  const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
-  const [followRebuild, setFollowRebuild] = useState<boolean>(false); // follow pageidagilarni refresh bosganda qayta qurib beradi
+  const [value, setValue] = useState("1");
   const [memberArticleSerchObj, setMemberArticleSerchObj] =
     useState<SerchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 4 });
+  const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
+  const [followRebuild, setFollowRebuild] = useState<Date>(new Date()); // follow pageidagilarni refresh bosganda qayta qurib beradi
 
   useEffect(() => {
-    if (!localStorage.getItem("member_data")) {
+    if (!verifyMemberData) {
       sweetFailureProvider("Please login first!", true, true);
     }
     const communityService = new CommunityApiService();
@@ -115,13 +116,13 @@ export function VisitMyPage(props: any) {
 
     // setChosenMember
     memberService
-      .getChosenMember(verifiedMemberData?._id)
+      .getChosenMember(verifyMemberData?._id)
       .then((data) => setChosenMember(data))
       .catch((err) => console.log(err));
-  }, [memberArticleSerchObj, articlesRebuild, followRebuild]);
+  }, [memberArticleSerchObj, articlesRebuild]);
 
   // Handlers//
-  const handleChange = (event: any, newValue: string) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
@@ -200,7 +201,7 @@ export function VisitMyPage(props: any) {
                       actions_enabled={true}
                       followRebuild={followRebuild}
                       setFollowRebuild={setFollowRebuild}
-                      mb_id={props.verifiedMemberData?._id}
+                      mb_id={verifyMemberData?._id}
                     />
                   </Box>
                 </TabPanel>
@@ -212,7 +213,7 @@ export function VisitMyPage(props: any) {
                       actions_enabled={true}
                       followRebuild={followRebuild}
                       setFollowRebuild={setFollowRebuild}
-                      mb_id={props.verifiedMemberData?._id}
+                      mb_id={verifyMemberData?._id}
                     />
                   </Box>
                 </TabPanel>

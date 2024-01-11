@@ -21,6 +21,7 @@ import {
 } from "../../../lib/sweetAlert";
 import { serverApi } from "../../../lib/config";
 import { useHistory } from "react-router-dom";
+import { verifyMemberData } from "../../apiServices/verify";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -60,7 +61,7 @@ export function MemberFollowing(props: any) {
   const unSubscribeHandler = async (e: any, id: string) => {
     try {
       e.stopPropagation(); // stopPropogation  bitaa tabelni bosganda ichiga click bolmasligi un
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifyMemberData, Definer.auth_err1);
 
       const followService = new FollowApiService();
       await followService.unSubscribe(id);

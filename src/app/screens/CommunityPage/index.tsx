@@ -14,9 +14,9 @@ import {
   ArrowForward,
   ArrowForwardIos,
 } from "@mui/icons-material";
-
-import { BoArticle, SearchArticlesObj } from "../../../types/boArticles";
 import CommunityApiService from "../../apiServices/communityApiService";
+import { SearchArticlesObj } from "../../../types/boArticles";
+import { BoArticle, SerchMemberArticlesObj } from "../../../types/boArticles";
 
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +24,7 @@ import { createSelector } from "reselect";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setTargetBoArticles } from "./slice";
 import { retrivetargetBoArticles } from "./selector";
+import ArrowBack from "@mui/icons-material/ArrowBack";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -49,7 +50,7 @@ export function CommunityPage(props: any) {
     {
       bo_id: "all",
       page: 1,
-      limit: 5,
+      limit: 4,
     }
   );
 
@@ -147,16 +148,20 @@ export function CommunityPage(props: any) {
                 </Box>
                 <Box className={"article_bott"}>
                   <Pagination
-                    count={5}
-                    page={1}
+                    count={
+                      searchArticlesObj.page >= 3
+                        ? searchArticlesObj.page + 1
+                        : 3
+                    }
+                    page={searchArticlesObj.page}
                     renderItem={(item) => (
                       <PaginationItem
                         components={{
-                          previous: ArrowBackIos,
-                          next: ArrowForwardIos,
+                          previous: ArrowBack,
+                          next: ArrowForward,
                         }}
                         {...item}
-                        color="secondary"
+                        color={"secondary"}
                       />
                     )}
                     onChange={handlePaginationChange}

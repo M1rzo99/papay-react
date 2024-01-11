@@ -41,6 +41,7 @@ import {
   setChosenRestaurants,
   setTargetProducts,
 } from "../../screens/RestaurantPage/slice";
+import { verifyMemberData } from "../../apiServices/verify";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -150,7 +151,7 @@ export function OneRestaurant(props: any) {
           like_ref_id: e.target.id,
           group_type: "product",
         });
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifyMemberData, Definer.auth_err1);
       assert.ok(like_result, Definer.general_err1);
 
       await sweetTopSmallSuccessAlert("success", 700, false);

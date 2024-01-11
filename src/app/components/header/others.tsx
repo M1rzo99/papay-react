@@ -14,6 +14,7 @@ import { NavLink } from "react-router-dom";
 import { Logout } from "@mui/icons-material";
 import { Basket } from "./basket";
 import { useState } from "react";
+import { verifyMemberData } from "../../apiServices/verify";
 
 export function NavbarOthers(props: any) {
   return (
@@ -41,7 +42,7 @@ export function NavbarOthers(props: any) {
                 Oshxona
               </NavLink>
             </Box>
-            {props.verifiedMemberData ? (
+            {verifyMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/orders" activeClassName="underline">
                   Buyurtma
@@ -54,7 +55,7 @@ export function NavbarOthers(props: any) {
                 Jamiyat
               </NavLink>
             </Box>
-            {props.verifiedMemberData ? (
+            {verifyMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/member-page" activeClassName="underline">
                   Sahifam
@@ -76,7 +77,7 @@ export function NavbarOthers(props: any) {
               setOrderRebuild={props.setOrderRebuild}
             />
 
-            {!props.verifiedMemberData ? (
+            {!verifyMemberData ? (
               <Box>
                 <Button
                   variant="contained"
@@ -89,7 +90,7 @@ export function NavbarOthers(props: any) {
             ) : (
               <img
                 style={{ width: "48px", height: "48px", borderRadius: "24px" }}
-                src={props.verifiedMemberData.mb_image}
+                src={verifyMemberData.mb_image}
                 alt="member_img"
                 onClick={props.handleLogOutClick}
               />

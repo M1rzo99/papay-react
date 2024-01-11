@@ -13,6 +13,7 @@ import {
 import { NavLink } from "react-router-dom";
 import { Logout } from "@mui/icons-material";
 import { Basket } from "./basket";
+import { verifyMemberData } from "../../apiServices/verify";
 
 export function NavbarHome(props: any) {
   return (
@@ -42,7 +43,7 @@ export function NavbarHome(props: any) {
                 Oshxona
               </NavLink>
             </Box>
-            {props.verifiedMemberData ? (
+            {verifyMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/orders" activeClassName="underline">
                   Buyurtma
@@ -55,7 +56,7 @@ export function NavbarHome(props: any) {
                 Jamiyat
               </NavLink>
             </Box>
-            {props.verifiedMemberData ? (
+            {verifyMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/member-page" activeClassName="underline">
                   Sahifam
@@ -77,7 +78,7 @@ export function NavbarHome(props: any) {
               setOrderRebuild={props.setOrderRebuild}
             />
 
-            {!props.verifiedMemberData ? (
+            {!verifyMemberData ? (
               <Box>
                 <Button
                   variant="contained"
@@ -90,7 +91,7 @@ export function NavbarHome(props: any) {
             ) : (
               <img
                 style={{ width: "48px", height: "48px", borderRadius: "24px" }}
-                src={props.verifiedMemberData.mb_image}
+                src={verifyMemberData.mb_image}
                 alt="member_img"
                 onClick={props.handleLogOutClick}
               />
@@ -152,7 +153,7 @@ export function NavbarHome(props: any) {
             </Box>
             <Box className="timeline_service">24 soat xizmatingizdamiz.</Box>
             <Box sx={{ mt: "90px" }}>
-              {!props.verifiedMemberData ? (
+              {!verifyMemberData ? (
                 <Button
                   variant="contained"
                   style={{
