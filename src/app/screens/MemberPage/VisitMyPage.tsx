@@ -98,7 +98,7 @@ export function VisitMyPage(props: any) {
   const [value, setValue] = useState("1");
   const [memberArticleSerchObj, setMemberArticleSerchObj] =
     useState<SerchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 4 });
-  const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
+  const [articlesRebuild, setArticlesRebuild] = useState<boolean>(false);
   const [followRebuild, setFollowRebuild] = useState<Date>(new Date()); // follow pageidagilarni refresh bosganda qayta qurib beradi
 
   useEffect(() => {
@@ -257,7 +257,7 @@ export function VisitMyPage(props: any) {
                   <div className="order_user_img">
                     <img
                       style={{ objectFit: "cover" }}
-                      src="/auth/default_user.svg"
+                      src={verifyMemberData?.mb_image}
                       className="order_user_avatar"
                     />
                     <div className="order_user_icon_box">
