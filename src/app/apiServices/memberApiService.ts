@@ -53,7 +53,7 @@ class MemberApiService {
       });
       assert.ok(result?.data, Definer.general_err1);
       assert.ok(result?.data?.state != "fail", result?.data?.message);
-      console.log("result:::", result);
+
       const logout_result = result.data.state;
       return logout_result == "success";
     } catch (err: any) {

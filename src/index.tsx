@@ -11,15 +11,18 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "./app/MaterialTheme";
 import ReactDOM from "react-dom";
 
-// const container = document.getElementById("root")!;
-// const root = createRoot(container);
+import { SocketContext, socket } from "./app/context/socket";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App />
+        <SocketContext.Provider value={socket}>
+          <App />
+        </SocketContext.Provider>
+        // socketni xohlagan joyda ishlata olishimz un app ni uning ichiga
+        kiritdik
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,
