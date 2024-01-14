@@ -44,7 +44,7 @@ class OrderApiService {
       console.log("state:", result.data.state);
 
       const orders: any = result.data.data;
-      console.log("orders:", orders);
+
       return orders;
     } catch (err: any) {
       console.log(`getMyOrders, ERROR: ${err.message}`);

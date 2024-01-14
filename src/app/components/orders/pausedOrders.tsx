@@ -93,7 +93,7 @@ export default function PausedOrders(props: any) {
                         <p>{item.item_quentity}</p>
                         <img src="/icons/pause.svg" />
                         <p style={{ marginLeft: "15px" }}>
-                          ${item.item_quentity * item.item_price}
+                          $ {item.item_quentity * item.item_price}
                         </p>
                       </Box>
                     </Box>
@@ -102,8 +102,10 @@ export default function PausedOrders(props: any) {
               </Box>
               <Box className="total_price_box black_solid">
                 <Box className="boxTotal">
-                  <p>mahsulot narxi</p>
-                  <p>${order.order_total_amount - order.order_delivery_cost}</p>
+                  <p>mahsulot narxi = </p>
+                  <p>
+                    $ {order.order_total_amount - order.order_delivery_cost}
+                  </p>
                   <img src="/icons/plus.svg" style={{ marginLeft: "20px" }} />
                   <p>Yetkazish hizmati</p>
                   <p>${order.order_delivery_cost}</p>

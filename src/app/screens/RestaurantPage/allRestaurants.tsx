@@ -133,7 +133,7 @@ export function AllRestaurants() {
               <form className={"search_form"} action="">
                 <input
                   type={"search"}
-                  className={"search_input"}
+                  className={"searchInput"}
                   name={"resSearch"}
                   placeholder="qidiruv"
                 />

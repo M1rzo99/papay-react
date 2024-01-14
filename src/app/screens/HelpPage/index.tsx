@@ -170,8 +170,8 @@ export function HelpPage() {
                       >
                         <Button
                           sx={{ mb: "10px", mr: "115px" }}
-                          type={"submit"}
                           variant="contained"
+                          type={"reset"}
                         >
                           Jo'natish
                         </Button>
