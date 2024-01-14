@@ -29,11 +29,11 @@
 }
 .community_page .chat_frame .chat_top {
   width: 100%;
-  flex-direction: column;
+
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid rgba(228, 228, 228, 0.83);
+
+  border-bottom: 1px solid rgba(39, 10, 10, 0.83);
   font-family: "Poppins";
   font-weight: 600;
   font-size: 2ch;
