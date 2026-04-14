@@ -22,3 +22,20 @@
 | Create React App | Build tooling |
 
 ## 📁 Project Structure
+## ⚡ Quick Start
+```bash
+git clone https://github.com/username/repo.git
+cd repo
+npm install
+npm start
+```
+
+## 📦 Scripts
+| Command | Description |
+|---|---|
+| `npm start` | Dev server at `localhost:3000` |
+| `npm test` | Interactive test runner |
+| `npm run build` | Production build |
+
+---
+Made with ♥ by **[Your Name]** · [Portfolio](#) · [LinkedIn](#)
