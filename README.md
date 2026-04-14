@@ -5,8 +5,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat&logo=typescript)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 
-> A modern, scalable web app built with **React 18**, **Redux Toolkit**, and **TypeScript** — crafted for performance and developer experience.
-
+>PAPAY is a restaurant aggregator where users can discover restaurants, browse menus & prices, leave reviews, and chat in real-time. Built as a full-stack learning project covering REST APIs, authentication, and WebSockets.
 ## ✨ Features
 - 🔷 **Type-safe** end-to-end with TypeScript
 - 🟣 **Predictable state** management via Redux Toolkit
